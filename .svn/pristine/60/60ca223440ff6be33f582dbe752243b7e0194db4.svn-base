@@ -1,0 +1,61 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+	package
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:11-37
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:1:1-19:12
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:3:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:6:5-80
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:6:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:7:5-83
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:7:22-81
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:8:5-78
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.INTERNET
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:9:5-66
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:9:22-64
+application
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:11:5-17:19
+	android:supportsRtl
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:14:9-35
+	android:label
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:13:9-41
+	android:allowBackup
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml:12:9-35
+uses-sdk
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/src/main/AndroidManifest.xml

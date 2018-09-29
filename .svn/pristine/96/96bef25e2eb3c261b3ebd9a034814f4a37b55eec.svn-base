@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nine_image_text_background_color">#4D000000</color>
+    <color name="nine_image_text_color">#FFFFFF</color>
+    <declare-styleable name="CircleProgressView"><attr format="color" name="cpv_progressNormalColor"/><attr format="color" name="cpv_progressReachColor"/><attr format="color" name="cpv_progressTextColor"/><attr format="dimension" name="cpv_progressTextSize"/><attr format="dimension" name="cpv_progressTextOffset"/><attr format="dimension" name="cpv_progressNormalSize"/><attr format="dimension" name="cpv_progressReachSize"/><attr format="dimension" name="cpv_radius"/><attr format="boolean" name="cpv_progressTextVisible"/><attr format="integer" name="cpv_progressStartArc"/><attr format="dimension" name="cpv_progressTextSkewX"/><attr format="string" name="cpv_progressTextPrefix"/><attr format="string" name="cpv_progressTextSuffix"/><attr format="color" name="cpv_innerBackgroundColor"/><attr format="enum" name="cpv_progressStyle">
+            <enum name="Normal" value="0"/>
+            <enum name="FillInner" value="1"/>
+            <enum name="FillInnerArc" value="2"/>
+        </attr><attr format="color" name="cpv_innerProgressColor"/><attr format="dimension" name="cpv_innerPadding"/><attr format="color" name="cpv_outerColor"/><attr format="dimension" name="cpv_outerSize"/><attr format="boolean" name="cpv_reachCapRound"/></declare-styleable>
+</resources>

@@ -1,0 +1,166 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+MERGED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-22:12
+MERGED from [:libraryAdapter] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryAdapter/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:libraryVideo] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryVideo/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [com.jakewharton:butterknife:8.6.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/0d11390b9a67ed90c95194b06490ad44/AndroidManifest.xml:2:1-7:12
+MERGED from [com.android.support:design:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/2bcd5e52744fc7a87d591e6b1cfe7784/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/af98ec89c8a44ba327cf5195ee58b0dd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/4494e14fbccf3c118c0435d24d53557a/AndroidManifest.xml:2:1-11:12
+MERGED from [com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/FlycoTabLayout_Lib-2.1.2.aar/c7c4658a9da7e11f94f3b4672860d4cd/AndroidManifest.xml:2:1-12:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/5c2eea295061dce6a516135bf636d046/AndroidManifest.xml:15:1-21:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/6c77c47a2e9ca3ffded786225012217a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3ddaa91f654860313c269ba4e75dd85d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/54e318e6cbc063ac93d42c546c657449/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/7b19f76c9835f5c3e0866e94ff972df0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2d6bc9828a543a0478d4a63581dd5b4e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/143a3288917aafb77b5f79464dd4612d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/6ae3ea39026e74253632fe8d29f4b83d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/3c2d15db9e40d01c013c1e98d8ad8199/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/05fa06183bf8a6f0eebbc4d305e7a492/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b297143f3b0a6a4b6d375785a1f9453a/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/695c3fea72551073913ca5defb23f2e1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/d58965fb7d4867ca051ab434b1187003/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/2474ea9cd4ee76f9ac11b420abb1dd26/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f563be5d31117c8ea8371ea104c55575/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:3:5-30
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:5:5-24:19
+MERGED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-20:19
+MERGED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-20:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/4494e14fbccf3c118c0435d24d53557a/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/4494e14fbccf3c118c0435d24d53557a/AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:12:9-40
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:11:9-71
+activity#com.hykj.liuzhi.androidcomponents.MainActivity
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:13:9-19:20
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:13:19-80
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:14:13-18:29
+action#android.intent.action.MAIN
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:15:17-69
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:15:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:17:17-77
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:17:27-74
+activity#com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity
+ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:20:9-23:52
+	android:screenOrientation
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:23:13-49
+	android:configChanges
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:22:13-74
+	android:name
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml:21:13-93
+uses-sdk
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+MERGED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:libraryAdapter] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryAdapter/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:libraryAdapter] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryAdapter/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:libraryVideo] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryVideo/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:libraryVideo] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryVideo/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.jakewharton:butterknife:8.6.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/0d11390b9a67ed90c95194b06490ad44/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.6.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/0d11390b9a67ed90c95194b06490ad44/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:design:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/2bcd5e52744fc7a87d591e6b1cfe7784/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/2bcd5e52744fc7a87d591e6b1cfe7784/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/af98ec89c8a44ba327cf5195ee58b0dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/af98ec89c8a44ba327cf5195ee58b0dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/4494e14fbccf3c118c0435d24d53557a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/4494e14fbccf3c118c0435d24d53557a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/FlycoTabLayout_Lib-2.1.2.aar/c7c4658a9da7e11f94f3b4672860d4cd/AndroidManifest.xml:8:5-10:41
+MERGED from [com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2] /Users/gary/.gradle/caches/transforms-1/files-1.1/FlycoTabLayout_Lib-2.1.2.aar/c7c4658a9da7e11f94f3b4672860d4cd/AndroidManifest.xml:8:5-10:41
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/5c2eea295061dce6a516135bf636d046/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/5c2eea295061dce6a516135bf636d046/AndroidManifest.xml:19:5-43
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/6c77c47a2e9ca3ffded786225012217a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/6c77c47a2e9ca3ffded786225012217a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3ddaa91f654860313c269ba4e75dd85d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3ddaa91f654860313c269ba4e75dd85d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/54e318e6cbc063ac93d42c546c657449/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/54e318e6cbc063ac93d42c546c657449/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/7b19f76c9835f5c3e0866e94ff972df0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/7b19f76c9835f5c3e0866e94ff972df0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2d6bc9828a543a0478d4a63581dd5b4e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2d6bc9828a543a0478d4a63581dd5b4e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/143a3288917aafb77b5f79464dd4612d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/143a3288917aafb77b5f79464dd4612d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/6ae3ea39026e74253632fe8d29f4b83d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/6ae3ea39026e74253632fe8d29f4b83d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/3c2d15db9e40d01c013c1e98d8ad8199/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/3c2d15db9e40d01c013c1e98d8ad8199/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/05fa06183bf8a6f0eebbc4d305e7a492/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/05fa06183bf8a6f0eebbc4d305e7a492/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b297143f3b0a6a4b6d375785a1f9453a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/gary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b297143f3b0a6a4b6d375785a1f9453a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/695c3fea72551073913ca5defb23f2e1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/695c3fea72551073913ca5defb23f2e1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/d58965fb7d4867ca051ab434b1187003/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/d58965fb7d4867ca051ab434b1187003/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/2474ea9cd4ee76f9ac11b420abb1dd26/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/2474ea9cd4ee76f9ac11b420abb1dd26/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f563be5d31117c8ea8371ea104c55575/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/gary/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f563be5d31117c8ea8371ea104c55575/AndroidManifest.xml:20:5-44
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-84
+	android:name
+		ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:22-81
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-79
+MERGED from [:libraryVideo] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryVideo/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-79
+MERGED from [:libraryVideo] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryVideo/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:22-76
+uses-permission#android.permission.INTERNET
+ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:5-67
+	android:name
+		ADDED from [:libraryNet] /Users/gary/MainProject/androidStuiodProjects/liuzhi/Android/libraryNet/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:22-64
