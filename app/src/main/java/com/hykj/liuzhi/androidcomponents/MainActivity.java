@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
         bottomView.setListener(new BottomNavigationView.Listener() {
             @Override
             public void onClick(int index) {
+                if (index==2){//+号跳转系统相册
 
+                }
             }
         });
     }

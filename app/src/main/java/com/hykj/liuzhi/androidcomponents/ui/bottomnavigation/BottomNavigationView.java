@@ -121,12 +121,6 @@ public class BottomNavigationView extends RelativeLayout {
                 listener.onClick(1);
                 break;
             case R.id.iv2:
-                iv0.setSelected(false);
-                iv1.setSelected(false);
-                iv2.setSelected(true);
-                iv3.setSelected(false);
-                iv4.setSelected(false);
-                changeTab(2);
                 listener.onClick(2);
                 break;
             case R.id.iv3:
@@ -168,13 +162,13 @@ public class BottomNavigationView extends RelativeLayout {
                     .hide(fragmentList.get(4))
                     .commitAllowingStateLoss();
         } else if (index==2){
-            supportFragmentManager.beginTransaction()
-                    .hide(fragmentList.get(0))
-                    .hide(fragmentList.get(1))
-                    .show(fragmentList.get(2))
-                    .hide(fragmentList.get(3))
-                    .hide(fragmentList.get(4))
-                    .commitAllowingStateLoss();
+//            supportFragmentManager.beginTransaction()
+//                    .hide(fragmentList.get(0))
+//                    .hide(fragmentList.get(1))
+//                    .show(fragmentList.get(2))
+//                    .hide(fragmentList.get(3))
+//                    .hide(fragmentList.get(4))
+//                    .commitAllowingStateLoss();
         } else if (index==3){
             supportFragmentManager.beginTransaction()
                     .hide(fragmentList.get(0))
