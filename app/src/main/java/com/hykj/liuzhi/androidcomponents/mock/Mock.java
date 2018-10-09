@@ -16,11 +16,9 @@ public class Mock {
     public static ArrayList list = new ArrayList();
     static {
         list.add(new MutiItem(1));
-        list.add(new MutiItem(1));
         list.add(new MutiItem(2));
+        list.add(new MutiItem(3));
         list.add(new MutiItem(4));
-        list.add(new MutiItem(1));
-        list.add(new MutiItem(1));
     }
     public static ArrayList getRecommendList(){
         return list;
