@@ -121,6 +121,12 @@ public class BottomNavigationView extends RelativeLayout {
                 listener.onClick(1);
                 break;
             case R.id.iv2:
+//                iv0.setSelected(false);
+//                iv1.setSelected(false);
+//                iv2.setSelected(true);
+//                iv3.setSelected(false);
+//                iv4.setSelected(false);
+//                changeTab(2);
                 listener.onClick(2);
                 break;
             case R.id.iv3:
