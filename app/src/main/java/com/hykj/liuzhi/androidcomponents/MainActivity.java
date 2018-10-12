@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.ui.activity.IssueClumnActivity;
 import com.hykj.liuzhi.androidcomponents.ui.bottomnavigation.BottomNavigationView;
@@ -16,6 +13,9 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(int index) {
                 if (index == 2) {//+号跳转系统相册
                     fitchSystemClumns();
+
 
                 }
             }

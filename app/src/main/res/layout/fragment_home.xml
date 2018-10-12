@@ -17,6 +17,7 @@
             android:layout_width="70dp"
             android:layout_height="match_parent" />
         <RelativeLayout
+            android:id="@+id/rl_search"
             android:background="@drawable/bg_edittext"
             android:layout_toRightOf="@id/iv_sign"
             android:layout_toLeftOf="@id/iv_message"

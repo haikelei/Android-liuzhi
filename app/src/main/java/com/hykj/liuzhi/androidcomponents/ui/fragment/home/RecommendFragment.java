@@ -1,5 +1,6 @@
 package com.hykj.liuzhi.androidcomponents.ui.fragment.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.mock.Mock;
+import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.RecommendAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.widget.CustomLoadMoreView;
 
@@ -48,6 +50,13 @@ public class RecommendFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new RecommendAdapter(getContext(), Mock.getRecommendList());
         rv.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getContext(), DetailVideoActivity.class);
+                startActivity(intent);
+            }
+        });
         mAdapter.setLoadMoreView(new CustomLoadMoreView());
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
