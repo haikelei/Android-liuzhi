@@ -3,12 +3,12 @@
     package="com.hykj.liuzhi">
 
     <application
+        android:name="com.hykj.liuzhi.androidcomponents.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.hykj.liuzhi.androidcomponents.MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name="com.hykj.liuzhi.androidcomponents.MainActivity">
             <intent-filter>
@@ -21,12 +21,18 @@
             android:name="com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".androidcomponents.ui.activity.IssueClumnActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".androidcomponents.ui.activity.MessageActivity"></activity>
+        <!--一键发布界面-->
+        <activity
+            android:name=".androidcomponents.ui.activity.IssueClumnActivity"
+            android:screenOrientation="portrait" />
+        <!--消息界面-->
+        <activity android:name=".androidcomponents.ui.activity.MessageActivity" />
+        <!--登录界面-->
+        <activity android:name=".androidcomponents.ui.activity.LoginActivity" />
+        <!--忘记密码界面-->
+        <activity android:name=".androidcomponents.ui.activity.ForgetPasswordActivity" />
+        <!--动态码登录界面-->
+        <activity android:name=".androidcomponents.ui.activity.DongStateCodeActivity" />
 
     </application>
 

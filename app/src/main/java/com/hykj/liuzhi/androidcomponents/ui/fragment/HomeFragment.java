@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.ui.activity.LoginActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MessageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.HomeFragmentPagerAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.widget.SignDialog;
@@ -59,6 +60,7 @@ public class HomeFragment extends Fragment {
 
     @OnClick({R.id.iv_sign, R.id.rl_search, R.id.iv_message})
     public void onViewClicked(View view) {
+        Intent intent = null;
         switch (view.getId()) {
             case R.id.iv_sign:
                 SignDialog dialog = new SignDialog(getContext());
@@ -66,11 +68,12 @@ public class HomeFragment extends Fragment {
                 dialog.show();
                 break;
             case R.id.rl_search:
+                intent = new Intent(getContext(), LoginActivity.class);
                 break;
             case R.id.iv_message:
-                Intent intent = new Intent(getContext(), MessageActivity.class);
-                startActivity(intent);
+                intent = new Intent(getContext(), MessageActivity.class);
                 break;
         }
+        startActivity(intent);
     }
 }
