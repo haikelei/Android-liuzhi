@@ -1,5 +1,6 @@
 package com.hykj.liuzhi.androidcomponents.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,12 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.flyco.tablayout.SlidingTabLayout;
+import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.ui.activity.MessageActivity;
+import com.hykj.liuzhi.androidcomponents.ui.adapter.HomeFragmentPagerAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.widget.SignDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
-import com.hykj.liuzhi.R;
-import com.hykj.liuzhi.androidcomponents.ui.adapter.HomeFragmentPagerAdapter;
 
 /**
  * @author: lujialei
@@ -51,5 +55,22 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick({R.id.iv_sign, R.id.rl_search, R.id.iv_message})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_sign:
+                SignDialog dialog = new SignDialog(getContext());
+                dialog.setCancelable(true);
+                dialog.show();
+                break;
+            case R.id.rl_search:
+                break;
+            case R.id.iv_message:
+                Intent intent = new Intent(getContext(), MessageActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
