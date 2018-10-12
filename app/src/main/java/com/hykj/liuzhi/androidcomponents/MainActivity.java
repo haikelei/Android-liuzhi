@@ -3,11 +3,11 @@ package com.hykj.liuzhi.androidcomponents;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.ui.bottomnavigation.BottomNavigationView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(int index) {
                 if (index==2){//+号跳转系统相册
+
 
                 }
             }
