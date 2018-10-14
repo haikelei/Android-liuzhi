@@ -18,7 +18,7 @@ import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.AddFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.CircleFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.HomeFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.MessageFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.ShopFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.MineFragment;
 
 /**
@@ -70,7 +70,7 @@ public class BottomNavigationView extends RelativeLayout {
         HomeFragment homeFragment = new HomeFragment();
         CircleFragment circleFragment = new CircleFragment();
         AddFragment addFragment = new AddFragment();
-        MessageFragment messageFragment = new MessageFragment();
+        ShopFragment messageFragment = new ShopFragment();
         MineFragment mineFragment = new MineFragment();
         fragmentList = new ArrayList();
         fragmentList.add(homeFragment);

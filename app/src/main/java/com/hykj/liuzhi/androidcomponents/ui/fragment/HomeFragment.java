@@ -69,11 +69,12 @@ public class HomeFragment extends Fragment {
                 break;
             case R.id.rl_search:
                 intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.iv_message:
                 intent = new Intent(getContext(), MessageActivity.class);
+                startActivity(intent);
                 break;
         }
-        startActivity(intent);
     }
 }
