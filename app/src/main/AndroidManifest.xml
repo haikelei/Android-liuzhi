@@ -33,6 +33,8 @@
         <activity android:name=".androidcomponents.ui.activity.ForgetPasswordActivity" />
         <!--动态码登录界面-->
         <activity android:name=".androidcomponents.ui.activity.DongStateCodeActivity" />
+        <!--注册界面-->
+        <activity android:name=".androidcomponents.ui.activity.RegistActivity"/>
 
     </application>
 

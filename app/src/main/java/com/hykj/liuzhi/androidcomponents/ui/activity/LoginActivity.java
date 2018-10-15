@@ -21,6 +21,8 @@ public class LoginActivity extends BaseActivity {
     TextView mTvLoginForgetpassword;
     @BindView(R.id.tv_login_dongcode2login)
     TextView mTvLoginDongcode2login;
+    @BindView(R.id.tv_login_toregist)
+    TextView tvLoginToregist;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.tv_login_forgetpassword, R.id.tv_login_dongcode2login})
+    @OnClick({R.id.tv_login_forgetpassword, R.id.tv_login_dongcode2login,R.id.tv_login_toregist})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -39,7 +41,12 @@ public class LoginActivity extends BaseActivity {
             case R.id.tv_login_dongcode2login:
                 intent = new Intent(LoginActivity.this, DongStateCodeActivity.class);
                 break;
+            case R.id.tv_login_toregist:
+                intent = new Intent(LoginActivity.this, RegistActivity.class);
+                break;
         }
         startActivity(intent);
     }
+
+
 }
