@@ -5,12 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.message.NotifyFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.message.TradeInfoFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.message.UserMessageFragment;
 
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.FashionFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.PlayFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.RecommendFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.TextureFragment;
+import java.util.ArrayList;
 
 /**
  * @author: lujialei
@@ -19,22 +18,18 @@ import com.hykj.liuzhi.androidcomponents.ui.fragment.home.TextureFragment;
  */
 
 
-public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
+public class DetailPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> list;
     private ArrayList<String> titleList;
-    public HomeFragmentPagerAdapter(FragmentManager fm) {
+    public DetailPagerAdapter(FragmentManager fm) {
         super(fm);
         list = new ArrayList<>();
-        list.add(new RecommendFragment());
-        list.add(new TextureFragment());
-        list.add(new FashionFragment());
-        list.add(new PlayFragment());
+        list.add(new NotifyFragment());
+        list.add(new UserMessageFragment());
         titleList = new ArrayList<>();
-        titleList.add("推荐");
-        titleList.add("纹理");
-        titleList.add("潮流");
-        titleList.add("玩品");
+        titleList.add("评论列表");
+        titleList.add("更多视频");
     }
 
     @Override

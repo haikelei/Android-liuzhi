@@ -12,15 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.interfaces.GlideImageLoader;
+import com.hykj.liuzhi.androidcomponents.mock.Mock;
+import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
+import com.hykj.liuzhi.androidcomponents.ui.adapter.RecommendAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
+import com.hykj.liuzhi.androidcomponents.ui.widget.CustomLoadMoreView;
+import com.youth.banner.Banner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import com.hykj.liuzhi.R;
-import com.hykj.liuzhi.androidcomponents.mock.Mock;
-import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
-import com.hykj.liuzhi.androidcomponents.ui.adapter.RecommendAdapter;
-import com.hykj.liuzhi.androidcomponents.ui.widget.CustomLoadMoreView;
 
 /**
  * @author: lujialei
@@ -49,6 +52,9 @@ public class RecommendFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new RecommendAdapter(getContext(), Mock.getRecommendList());
+        BannerHeader header = new BannerHeader(getContext());
+        Banner banner = header.getBanner();
+        mAdapter.addHeaderView(header);
         rv.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -61,9 +67,14 @@ public class RecommendFragment extends Fragment {
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                 loadData();
+                loadData();
             }
-        },rv);
+        }, rv);
+
+        banner.setImages(Mock.getBannerList());
+        banner.setImageLoader(new GlideImageLoader())
+                .setDelayTime(5000)
+                .start();
     }
 
     private void loadData() {
@@ -73,7 +84,7 @@ public class RecommendFragment extends Fragment {
                 mAdapter.addData(Mock.getRecommendList());
                 mAdapter.loadMoreComplete();
             }
-        },2000);
+        }, 2000);
     }
 
     @Override

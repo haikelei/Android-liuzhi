@@ -25,4 +25,10 @@ public class SignDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_dialog_sign);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
 }
