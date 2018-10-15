@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.hykj.liuzhi.androidcomponents.ui.fragment.detail.DetailCommentFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.detail.DetailMoreVideoFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.message.NotifyFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.message.TradeInfoFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.message.UserMessageFragment;
@@ -25,8 +27,8 @@ public class DetailPagerAdapter extends FragmentPagerAdapter {
     public DetailPagerAdapter(FragmentManager fm) {
         super(fm);
         list = new ArrayList<>();
-        list.add(new NotifyFragment());
-        list.add(new UserMessageFragment());
+        list.add(new DetailCommentFragment());
+        list.add(new DetailMoreVideoFragment());
         titleList = new ArrayList<>();
         titleList.add("评论列表");
         titleList.add("更多视频");
