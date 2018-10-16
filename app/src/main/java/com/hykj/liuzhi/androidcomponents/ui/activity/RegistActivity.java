@@ -6,8 +6,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

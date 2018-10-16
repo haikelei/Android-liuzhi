@@ -1,11 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_marginTop="30dp"
-        android:text="动态码登录"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="登录"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
+
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="130dp"
+        android:src="@mipmap/btn_publish_photo" />
+
+    <EditText
+        android:id="@+id/et_dongtailogin_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:hint="请输入手机号"
+        android:paddingLeft="16dp"
+        android:textSize="14sp" />
+
+    <View
+        style="@style/commonDiciderStyle"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="15dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_dongtailogin_authcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入动态密码"
+            android:paddingLeft="16dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_dongtailogin_authcode"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_button_regist_oval"
+            android:gravity="center"
+            android:text="获取动态验证码" />
+    </RelativeLayout>
+
+    <View
+        style="@style/commonDiciderStyle"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="15dp" />
+
+
+    <TextView
+        android:id="@+id/tv_dongtailogin_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffea00"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tv_dongtailogin_forgetpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="31dp"
+            android:text="忘记密码"
+
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_dongtailogin_pass2login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="31dp"
+            android:text="密码登录"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_dongtailogin_toregist"
+        android:layout_width="51pt"
+        android:layout_height="13pt"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_button_regist_white"
+        android:gravity="center"
+        android:text="立即注册"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp" />
+</LinearLayout>
