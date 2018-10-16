@@ -53,7 +53,7 @@ public class DetailMoreVideoFragment extends Fragment {
     private void initView() {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList list = new ArrayList();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             list.add(new DetailMoreVideoBean());
         }
         mAdapter = new DetailMoreVideoAdapter(list);
