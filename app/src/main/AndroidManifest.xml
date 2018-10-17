@@ -35,6 +35,10 @@
         <activity android:name=".androidcomponents.ui.activity.DongStateCodeActivity" />
         <!--注册界面-->
         <activity android:name=".androidcomponents.ui.activity.RegistActivity"/>
+        <!--编辑用户资料页面-->
+        <activity android:name=".androidcomponents.ui.activity.EditUserDataActivity"/>
+        <!--设置界面-->
+        <activity android:name=".androidcomponents.ui.activity.SetUpActivity"/>
 
     </application>
 

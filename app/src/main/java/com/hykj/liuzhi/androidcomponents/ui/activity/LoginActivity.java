@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.MainActivity;
+import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,7 +41,17 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        initView();
         ButterKnife.bind(this);
+    }
+
+    private void initView() {
+        new TitleBuilder(LoginActivity.this).setTitleText("登录").setLeftIco(R.mipmap.common_black_back).setLeftIcoListening(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @OnClick({R.id.tv_login_forgetpassword, R.id.tv_login_dongcode2login, R.id.tv_login_toregist, R.id.tv_login_login})
@@ -69,18 +80,18 @@ public class LoginActivity extends BaseActivity {
     private void UserLogin() {
         mLoginPhone = etLoginPhone.getText().toString().trim();
         mLoginPass = etLoginPassword.getText().toString().trim();
-        if (TextUtils.isEmpty(mLoginPhone)||TextUtils.isEmpty(mLoginPass)){
+        if (TextUtils.isEmpty(mLoginPhone) || TextUtils.isEmpty(mLoginPass)) {
 
             Toast.makeText(this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
 
-        }else {
-            if (mLoginPhone.equals("admin") || mLoginPass.equals("123456")) {
-               Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+        } else {
+            if (mLoginPhone.equals("admin") && mLoginPass.equals("123456")) {
+                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
-            }else {
+            } else {
                 Toast.makeText(this, "账号或者密码不正确", Toast.LENGTH_SHORT).show();
 
             }
