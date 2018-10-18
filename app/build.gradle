@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
     buildToolsVersion '26.0.2'
 }
 
@@ -38,4 +43,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     /*图片视频三方库*/
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+    /*switchbutton*/
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    /*省市区*/
+    implementation 'com.contrarywind:Android-PickerView:4.1.4'    /* 滚轮时间  地址*/
 }

@@ -13,9 +13,9 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -157,6 +157,7 @@
             <View style="@style/commonDiciderStyle" />
 
             <RelativeLayout
+                android:id="@+id/rl_mine_setup_bindemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -188,6 +189,7 @@
                 android:textColor="@color/mineTextCommonColor" />
 
             <RelativeLayout
+                android:id="@+id/rl_mine_setup_takeaddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"

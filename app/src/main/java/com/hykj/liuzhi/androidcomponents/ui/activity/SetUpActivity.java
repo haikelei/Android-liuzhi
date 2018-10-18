@@ -1,5 +1,6 @@
 package com.hykj.liuzhi.androidcomponents.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -20,6 +21,10 @@ public class SetUpActivity extends BaseActivity {
     RelativeLayout rlSetupFollows;
     @BindView(R.id.tv_setup_exitlogin)
     TextView tvSetupExitlogin;
+    @BindView(R.id.rl_mine_setup_bindemail)
+    RelativeLayout rlMineSetupBindemail;
+    @BindView(R.id.rl_mine_setup_takeaddress)
+    RelativeLayout rlMineSetupTakeaddress;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,14 +49,23 @@ public class SetUpActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.rl_setup_fans, R.id.rl_setup_follows, R.id.tv_setup_exitlogin})
+    @OnClick({R.id.rl_setup_fans, R.id.rl_setup_follows, R.id.tv_setup_exitlogin,R.id.rl_mine_setup_bindemail,R.id.rl_mine_setup_takeaddress})
     public void onViewClicked(View view) {
+        Intent intent=null;
         switch (view.getId()) {
             case R.id.rl_setup_fans:
                 break;
             case R.id.rl_setup_follows:
                 break;
             case R.id.tv_setup_exitlogin:
+                break;
+            case R.id.rl_mine_setup_takeaddress:
+                intent=new Intent(SetUpActivity.this,SelectAdressActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_mine_setup_bindemail:
+                intent=new Intent(SetUpActivity.this,BindEmailActivity.class);
+                startActivity(intent);
                 break;
         }
     }

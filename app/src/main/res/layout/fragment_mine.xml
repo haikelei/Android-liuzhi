@@ -111,7 +111,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="35dp"
+                    android:layout_marginRight="30dp"
                     android:drawableLeft="@mipmap/icon_magic_seed"
                     android:drawablePadding="7dp"
                     android:textColor="#c12472"
