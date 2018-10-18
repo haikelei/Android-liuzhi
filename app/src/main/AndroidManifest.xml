@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hykj.liuzhi">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
     <application
         android:name="com.hykj.liuzhi.androidcomponents.MyApplication"
         android:allowBackup="true"
@@ -36,7 +41,19 @@
         <!--动态码登录界面-->
         <activity android:name=".androidcomponents.ui.activity.DongStateCodeActivity" />
         <!--注册界面-->
-        <activity android:name=".androidcomponents.ui.activity.RegistActivity"/>
+        <activity android:name=".androidcomponents.ui.activity.RegistActivity" />
+        <!--编辑用户资料页面-->
+        <activity android:name=".androidcomponents.ui.activity.EditUserDataActivity" />
+        <!--设置界面-->
+        <activity android:name=".androidcomponents.ui.activity.SetUpActivity" />
+        <!--绑定邮箱界面-->
+        <activity android:name=".androidcomponents.ui.activity.BindEmailActivity" />
+        <!--选择收货地址-->
+        <activity android:name=".androidcomponents.ui.activity.SelectAdressActivity" />
+        <!--新增地址界面-->
+        <activity android:name=".androidcomponents.ui.activity.AddAdressActivity" />
+        <!--我的收藏界面-->
+        <activity android:name=".androidcomponents.ui.activity.MyCollectActivity" />
 
     </application>
 

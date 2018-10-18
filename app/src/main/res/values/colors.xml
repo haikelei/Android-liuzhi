@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="divider">#E5E5E5</color>
+    <color name="color_f6">#f6f6f6</color>
+    <color name="mineTextCommonColor">#414141</color>
 </resources>

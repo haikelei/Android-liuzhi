@@ -1,12 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:background="#eeeeee"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="211dp"
+        android:background="#eeeeee">
 
+        <com.hykj.liuzhi.androidcomponents.utils.RoundImageView
+            android:id="@+id/iv_mine_userhead"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:background="@mipmap/btn_publish_photo" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="29dp"
+            android:layout_toRightOf="@+id/iv_mine_userhead">
+
+
+            <LinearLayout
+                android:id="@+id/ll_person_datacount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+
+                <LinearLayout
+                    android:id="@+id/ll_mine_mycollect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="27dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="56"
+                        android:textColor="@color/mineTextCommonColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="收藏"
+                        android:textColor="@color/mineTextCommonColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="27dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="288"
+                        android:textColor="@color/mineTextCommonColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="关注"
+                        android:textColor="@color/mineTextCommonColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/mineTextCommonColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="粉丝"
+                        android:textColor="@color/mineTextCommonColor" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/ll_person_datacount"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:drawableLeft="@mipmap/icon_magic_seed"
+                    android:drawablePadding="7dp"
+                    android:textColor="#c12472"
+                    android:text="20" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/video_downloaded"
+                    android:drawablePadding="7dp"
+                    android:textColor="@color/mineTextCommonColor"
+                    android:text="20" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_mineuser_nike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="summer小姐姐"
+                android:textColor="#414141"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_mineuser_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_mineuser_nike"
+                android:layout_centerVertical="true"
+                android:text="ID:344677"
+                android:textColor="#aaaaaa"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_mine_edit_userdata"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_button_common_white"
+                android:gravity="center"
+                android:text="编辑主页" />
+
+            <RelativeLayout
+                android:id="@+id/rl_mine_setup"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/shape_button_common_white">
+
+                <ImageView
+                    android:id="@+id/tv_mine_set"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/set_up" />
+
+            </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+
+
+</LinearLayout>
