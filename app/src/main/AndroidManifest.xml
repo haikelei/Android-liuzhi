@@ -22,6 +22,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity android:name=".androidcomponents.ui.activity.CartActivity"></activity>
+        <activity android:name=".androidcomponents.ui.activity.DetailCircleImageActivity"></activity>
         <!--一键发布界面-->
         <activity
             android:name=".androidcomponents.ui.activity.IssueClumnActivity"
