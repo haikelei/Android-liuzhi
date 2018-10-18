@@ -35,6 +35,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/ll_mine_mycollect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="27dp"

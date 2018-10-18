@@ -8,11 +8,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
+import com.hykj.liuzhi.androidcomponents.ui.activity.MyCollectActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.SetUpActivity;
 import com.hykj.liuzhi.androidcomponents.utils.RoundImageView;
 
@@ -29,7 +31,6 @@ import butterknife.Unbinder;
 
 
 public class MineFragment extends Fragment {
-
     @BindView(R.id.iv_mine_userhead)
     RoundImageView ivMineUserhead;
     @BindView(R.id.tv_mineuser_nike)
@@ -41,6 +42,8 @@ public class MineFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.rl_mine_setup)
     RelativeLayout rlMineSetup;
+    @BindView(R.id.ll_mine_mycollect)
+    LinearLayout llMineMycollect;
 
     @Nullable
     @Override
@@ -56,9 +59,9 @@ public class MineFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup})
+    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup,R.id.ll_mine_mycollect})
     public void onViewClicked(View view) {
-        Intent intent=null;
+        Intent intent = null;
         switch (view.getId()) {
             case R.id.iv_mine_userhead:
                 break;
@@ -68,7 +71,9 @@ public class MineFragment extends Fragment {
                 break;
             case R.id.rl_mine_setup:
                 intent = new Intent(getContext(), SetUpActivity.class);
-
+                break;
+            case R.id.ll_mine_mycollect:
+                intent = new Intent(getContext(), MyCollectActivity.class);
                 break;
         }
         startActivity(intent);

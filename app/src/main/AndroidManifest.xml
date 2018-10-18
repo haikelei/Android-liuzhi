@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.hykj.liuzhi">
+    package="com.hykj.liuzhi">
 
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
 
-<application
-    android:name="com.hykj.liuzhi.androidcomponents.MyApplication"
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity android:name="com.hykj.liuzhi.androidcomponents.MainActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+    <application
+        android:name="com.hykj.liuzhi.androidcomponents.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.hykj.liuzhi.androidcomponents.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity
-        android:name="com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity"
-        android:configChanges="orientation|screenSize|keyboardHidden"
-        android:screenOrientation="portrait" />
-    <activity android:name=".androidcomponents.ui.activity.CartActivity"></activity>
-    <!--一键发布界面-->
-    <activity
-        android:name=".androidcomponents.ui.activity.IssueClumnActivity"
-        android:screenOrientation="portrait" />
-    <!--消息界面-->
-    <activity android:name=".androidcomponents.ui.activity.MessageActivity" />
-    <!--登录界面-->
-    <activity android:name=".androidcomponents.ui.activity.LoginActivity" />
-    <!--忘记密码界面-->
-    <activity android:name=".androidcomponents.ui.activity.ForgetPasswordActivity" />
-    <!--动态码登录界面-->
-    <activity android:name=".androidcomponents.ui.activity.DongStateCodeActivity" />
-    <!--注册界面-->
-    <activity android:name=".androidcomponents.ui.activity.RegistActivity" />
-    <!--编辑用户资料页面-->
-    <activity android:name=".androidcomponents.ui.activity.EditUserDataActivity" />
-    <!--设置界面-->
-    <activity android:name=".androidcomponents.ui.activity.SetUpActivity" />
-    <!--绑定邮箱界面-->
-    <activity android:name=".androidcomponents.ui.activity.BindEmailActivity" />
-    <!--选择收货地址-->
-    <activity android:name=".androidcomponents.ui.activity.SelectAdressActivity" />
-    <!--新增地址界面-->
-    <activity android:name=".androidcomponents.ui.activity.AddAdressActivity"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity android:name=".androidcomponents.ui.activity.CartActivity"></activity>
+        <!--一键发布界面-->
+        <activity
+            android:name=".androidcomponents.ui.activity.IssueClumnActivity"
+            android:screenOrientation="portrait" />
+        <!--消息界面-->
+        <activity android:name=".androidcomponents.ui.activity.MessageActivity" />
+        <!--登录界面-->
+        <activity android:name=".androidcomponents.ui.activity.LoginActivity" />
+        <!--忘记密码界面-->
+        <activity android:name=".androidcomponents.ui.activity.ForgetPasswordActivity" />
+        <!--动态码登录界面-->
+        <activity android:name=".androidcomponents.ui.activity.DongStateCodeActivity" />
+        <!--注册界面-->
+        <activity android:name=".androidcomponents.ui.activity.RegistActivity" />
+        <!--编辑用户资料页面-->
+        <activity android:name=".androidcomponents.ui.activity.EditUserDataActivity" />
+        <!--设置界面-->
+        <activity android:name=".androidcomponents.ui.activity.SetUpActivity" />
+        <!--绑定邮箱界面-->
+        <activity android:name=".androidcomponents.ui.activity.BindEmailActivity" />
+        <!--选择收货地址-->
+        <activity android:name=".androidcomponents.ui.activity.SelectAdressActivity" />
+        <!--新增地址界面-->
+        <activity android:name=".androidcomponents.ui.activity.AddAdressActivity" />
+        <!--我的收藏界面-->
+        <activity android:name=".androidcomponents.ui.activity.MyCollectActivity" />
 
-</application>
+    </application>
 
 </manifest>
