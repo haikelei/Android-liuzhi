@@ -22,6 +22,7 @@
         android:layout_marginTop="20dp"
         android:background="@null"
         android:hint="请输入手机号"
+        android:inputType="phone"
         android:paddingLeft="16dp"
         android:textSize="14sp" />
 
@@ -67,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@null"
+        android:inputType="textPassword"
         android:hint="请输入密码(至少6位字符)"
         android:paddingLeft="16dp"
         android:textSize="14sp" />

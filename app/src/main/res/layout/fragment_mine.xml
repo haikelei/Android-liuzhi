@@ -57,6 +57,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_mine_myfocus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="27dp"
@@ -78,6 +79,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_mine_myfans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -110,6 +112,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_mine_sead"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"

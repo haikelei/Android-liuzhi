@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 .forResult(PictureConfig.CHOOSE_REQUEST);
     }
 
-
     private void initView() {
+
         bottomView.initFragment(R.id.container, getSupportFragmentManager());
     }
 

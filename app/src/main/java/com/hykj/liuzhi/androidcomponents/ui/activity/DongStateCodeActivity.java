@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +38,16 @@ public class DongStateCodeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dongstate_login);
         ButterKnife.bind(this);
+        initView();
+    }
+
+    private void initView() {
+        new TitleBuilder(DongStateCodeActivity.this).setTitleText("登录").setLeftIco(R.mipmap.common_black_back).setLeftIcoListening(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @OnClick({R.id.tv_dongtailogin_pass2login, R.id.tv_dongtailogin_toregist})

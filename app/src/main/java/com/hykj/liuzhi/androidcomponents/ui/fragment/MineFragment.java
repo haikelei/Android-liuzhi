@@ -1,6 +1,7 @@
 package com.hykj.liuzhi.androidcomponents.ui.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyCollectActivity;
+import com.hykj.liuzhi.androidcomponents.ui.activity.MyJiFenActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.SetUpActivity;
 import com.hykj.liuzhi.androidcomponents.utils.RoundImageView;
 
@@ -44,6 +47,14 @@ public class MineFragment extends Fragment {
     RelativeLayout rlMineSetup;
     @BindView(R.id.ll_mine_mycollect)
     LinearLayout llMineMycollect;
+    @BindView(R.id.ll_mine_myfocus)
+    LinearLayout llMineMyfocus;
+    @BindView(R.id.ll_mine_myfans)
+    LinearLayout llMineMyfans;
+    @BindView(R.id.tv_mine_set)
+    ImageView tvMineSet;
+    @BindView(R.id.tv_mine_sead)
+    TextView tvMineSead;
 
     @Nullable
     @Override
@@ -54,16 +65,38 @@ public class MineFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        initView();
+    }
+
+    private void initView() {
+        restoreInfo();
+    }
+
+    /*获取保存的信息*/
+    private void restoreInfo() {
+        SharedPreferences sp = getActivity().getSharedPreferences("data", 0);
+        String userPhone = sp.getString("phone", "");
+        if (!userPhone.isEmpty()) {
+            tvMineuserNike.setText(userPhone);
+        }
+
+
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
 
-    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup,R.id.ll_mine_mycollect})
+    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup, R.id.ll_mine_mycollect, R.id.ll_mine_myfocus, R.id.ll_mine_myfans, R.id.tv_mine_sead})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.iv_mine_userhead:
+                intent = new Intent(getContext(), EditUserDataActivity.class);
                 break;
             case R.id.tv_mine_edit_userdata:
                 intent = new Intent(getContext(), EditUserDataActivity.class);
@@ -74,6 +107,19 @@ public class MineFragment extends Fragment {
                 break;
             case R.id.ll_mine_mycollect:
                 intent = new Intent(getContext(), MyCollectActivity.class);
+                break;
+
+            case R.id.ll_mine_myfocus:
+                intent = new Intent(getContext(), MyCollectActivity.class);
+                break;
+
+            case R.id.ll_mine_myfans:
+//                intent = new Intent(getContext(), SQLactivity.class);
+                intent = new Intent(getContext(), MyCollectActivity.class);
+                break;
+
+            case R.id.tv_mine_sead:
+                intent = new Intent(getContext(), MyJiFenActivity.class);
                 break;
         }
         startActivity(intent);

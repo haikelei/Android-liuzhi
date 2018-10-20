@@ -3,10 +3,14 @@ package com.hykj.liuzhi.androidcomponents;
 import android.app.Application;
 import android.content.Context;
 
+import com.hykj.liuzhi.greendao.gen.DaoMaster;
+import com.hykj.liuzhi.greendao.gen.DaoSession;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.SerializableDiskConverter;
 import com.zhouyou.http.model.HttpHeaders;
 import com.zhouyou.http.model.HttpParams;
+
+import org.greenrobot.greendao.database.Database;
 
 /**
  * @author: lujialei
@@ -17,11 +21,28 @@ import com.zhouyou.http.model.HttpParams;
 
 public class MyApplication extends Application {
     private static Application app = null;
+    public static final boolean ENCRYPTED = true;
+    public DaoSession daoSession;
+
+    public DaoSession getDaoSession() {
+        return daoSession;
+    }
+
+
     @Override
     public void onCreate() {
         super.onCreate();
         app = this;
+
         initNet();
+        initGreenDao();
+
+    }
+
+    private void initGreenDao() {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? "users-db-encrypted" : "users-db");
+        Database db = helper.getWritableDb();
+        daoSession = new DaoMaster(db).newSession();
     }
 
     private void initNet() {

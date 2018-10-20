@@ -1,6 +1,7 @@
 package com.hykj.liuzhi.androidcomponents.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -81,13 +82,14 @@ public class LoginActivity extends BaseActivity {
         mLoginPhone = etLoginPhone.getText().toString().trim();
         mLoginPass = etLoginPassword.getText().toString().trim();
         if (TextUtils.isEmpty(mLoginPhone) || TextUtils.isEmpty(mLoginPass)) {
-
             Toast.makeText(this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
-
         } else {
-            if (mLoginPhone.equals("admin") && mLoginPass.equals("123456")) {
-                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            SharedPreferences userData = getSharedPreferences("data", MODE_PRIVATE);
 
+            if (mLoginPhone.equals(userData.getString("phone", "")) && mLoginPass.equals(userData.getString("password", ""))) {
+                SharedPreferences.Editor editor = userData.edit();
+                editor.commit();
+                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -99,6 +101,8 @@ public class LoginActivity extends BaseActivity {
 
 
     }
+
+
 
 
 }

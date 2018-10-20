@@ -54,6 +54,24 @@
         <activity android:name=".androidcomponents.ui.activity.AddAdressActivity" />
         <!--我的收藏界面-->
         <activity android:name=".androidcomponents.ui.activity.MyCollectActivity" />
+        <!--数据库界面-->
+        <activity android:name=".androidcomponents.ui.activity.SQLactivity" />
+        <!--登录记录界面-->
+        <activity android:name=".androidcomponents.ui.activity.LoginRecordActivity" />
+        <!--修改密码界面-->
+        <activity android:name=".androidcomponents.ui.activity.ChangePasswordActivity" />
+        <!--实名认证界面-->
+        <activity android:name=".androidcomponents.ui.activity.TrueNameIdenActivity" />
+        <!--投诉建议界面-->
+        <activity android:name=".androidcomponents.ui.activity.SuggestActivity" />
+        <!--修改名字界面-->
+        <activity android:name=".androidcomponents.ui.activity.ChangeNameActivity" />
+        <!--我的积分界面-->
+        <activity android:name=".androidcomponents.ui.activity.MyJiFenActivity" />
+        <!--积分记录界面-->
+        <activity android:name=".androidcomponents.ui.activity.JiFenRecordActivity" />
+        <!--怎么获得神奇种子界面-->
+        <activity android:name=".androidcomponents.ui.activity.HowToGetSeedActivity"/>
 
     </application>
 

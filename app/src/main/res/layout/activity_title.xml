@@ -3,9 +3,7 @@
     android:id="@+id/title_bar"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
-
     android:background="@color/white"
-    android:paddingLeft="5dp"
     android:paddingRight="7dp">
 
     <ImageView

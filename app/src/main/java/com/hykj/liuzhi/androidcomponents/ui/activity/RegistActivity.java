@@ -1,4 +1,6 @@
 package com.hykj.liuzhi.androidcomponents.ui.activity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 public class RegistActivity extends BaseActivity {
     @BindView(R.id.title_leftIco)
     ImageView titleLeftIco;
@@ -63,7 +66,18 @@ public class RegistActivity extends BaseActivity {
             case R.id.et_regist_authcode:
                 break;
             case R.id.tv_regist_regist:
+                saveUserData();
                 break;
         }
+    }
+
+    private void saveUserData() {
+        // TODO Auto-generated method stub
+        SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+        editor.putString("phone", etRegistPhone.getText().toString().trim());
+        editor.putString("password", etRegistPassword.getText().toString().trim());
+        editor.commit();
+        finish();
+
     }
 }

@@ -25,6 +25,14 @@ public class SetUpActivity extends BaseActivity {
     RelativeLayout rlMineSetupBindemail;
     @BindView(R.id.rl_mine_setup_takeaddress)
     RelativeLayout rlMineSetupTakeaddress;
+    @BindView(R.id.rl_mine_setup_change_pass)
+    RelativeLayout rlMineSetupChangePass;
+    @BindView(R.id.rl_mine_setup_realname_auth)
+    RelativeLayout rlMineSetupRealnameAuth;
+    @BindView(R.id.rl_mine_setup_login_record)
+    RelativeLayout rlMineSetupLoginRecord;
+    @BindView(R.id.rl_mine_setup_suggest)
+    RelativeLayout rlMineSetupSuggest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,9 +57,10 @@ public class SetUpActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.rl_setup_fans, R.id.rl_setup_follows, R.id.tv_setup_exitlogin,R.id.rl_mine_setup_bindemail,R.id.rl_mine_setup_takeaddress})
+    @OnClick({R.id.rl_setup_fans, R.id.rl_setup_follows, R.id.tv_setup_exitlogin, R.id.rl_mine_setup_bindemail, R.id.rl_mine_setup_takeaddress,
+            R.id.rl_mine_setup_change_pass, R.id.rl_mine_setup_realname_auth, R.id.rl_mine_setup_login_record, R.id.rl_mine_setup_suggest})
     public void onViewClicked(View view) {
-        Intent intent=null;
+        Intent intent = null;
         switch (view.getId()) {
             case R.id.rl_setup_fans:
                 break;
@@ -60,11 +69,29 @@ public class SetUpActivity extends BaseActivity {
             case R.id.tv_setup_exitlogin:
                 break;
             case R.id.rl_mine_setup_takeaddress:
-                intent=new Intent(SetUpActivity.this,SelectAdressActivity.class);
+                intent = new Intent(SetUpActivity.this, SelectAdressActivity.class);
                 startActivity(intent);
                 break;
             case R.id.rl_mine_setup_bindemail:
-                intent=new Intent(SetUpActivity.this,BindEmailActivity.class);
+                intent = new Intent(SetUpActivity.this, BindEmailActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_mine_setup_change_pass:
+                intent = new Intent(SetUpActivity.this, ChangePasswordActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.rl_mine_setup_realname_auth:
+                intent = new Intent(SetUpActivity.this, TrueNameIdenActivity.class);
+                startActivity(intent);
+
+                break;
+            case R.id.rl_mine_setup_login_record:
+                intent = new Intent(SetUpActivity.this, LoginRecordActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_mine_setup_suggest:
+                intent = new Intent(SetUpActivity.this, SuggestActivity.class);
                 startActivity(intent);
                 break;
         }

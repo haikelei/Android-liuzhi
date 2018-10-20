@@ -9,17 +9,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.AddFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.CircleFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.HomeFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.MineFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.ShopFragment;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.hykj.liuzhi.R;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.AddFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.CircleFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.HomeFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.ShopFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.MineFragment;
 
 /**
  * @author: lujialei
@@ -146,6 +147,7 @@ public class BottomNavigationView extends RelativeLayout {
                 iv4.setSelected(true);
                 changeTab(4);
                 listener.onClick(4);
+
                 break;
         }
     }
