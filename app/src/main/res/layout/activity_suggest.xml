@@ -11,6 +11,7 @@
         android:background="@color/white">
 
         <ImageView
+            android:id="@+id/iv_suggest_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
@@ -27,6 +28,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/tv_suggest_commit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
