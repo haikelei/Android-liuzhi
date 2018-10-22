@@ -5,8 +5,13 @@
     android:background="@android:color/transparent"
     xmlns:roundiv="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_centerInParent="true"
+        android:layout_width="245dp"
+        android:layout_height="288dp">
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/ll_content"
         android:orientation="vertical"
         android:layout_width="245dp"
         android:layout_height="250dp" >
@@ -71,5 +76,14 @@
         </RelativeLayout>
         
     </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_marginRight="19dp"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/btn_close_sign"
+        android:layout_width="20dp"
+        android:layout_height="38dp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

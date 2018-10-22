@@ -29,7 +29,7 @@ public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         list.add(new RecommendFragment());
         list.add(new TextureFragment());
         list.add(new FashionFragment());
-        list.add(new PlayFragment());
+        list.add(new RecommendFragment());
         titleList = new ArrayList<>();
         titleList.add("推荐");
         titleList.add("纹理");
