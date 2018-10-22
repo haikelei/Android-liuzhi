@@ -6,4 +6,5 @@
     <color name="divider">#E5E5E5</color>
     <color name="color_f6">#f6f6f6</color>
     <color name="mineTextCommonColor">#414141</color>
+    <color name="GeyTextColor">#aaaaaa</color>
 </resources>

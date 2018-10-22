@@ -104,11 +104,11 @@
 
 
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/ll_person_datacount"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -118,16 +118,17 @@
                     android:layout_marginRight="30dp"
                     android:drawableLeft="@mipmap/icon_magic_seed"
                     android:drawablePadding="7dp"
-                    android:textColor="#c12472"
-                    android:text="20" />
+                    android:text="20"
+                    android:textColor="#c12472" />
 
                 <TextView
+                    android:id="@+id/tv_mine_offline_down"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/video_downloaded"
                     android:drawablePadding="7dp"
-                    android:textColor="@color/mineTextCommonColor"
-                    android:text="20" />
+                    android:text="20"
+                    android:textColor="@color/mineTextCommonColor" />
 
             </LinearLayout>
 
@@ -180,6 +181,7 @@
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"

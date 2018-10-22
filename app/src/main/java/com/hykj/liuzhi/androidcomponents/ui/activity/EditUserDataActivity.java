@@ -38,9 +38,11 @@ public class EditUserDataActivity extends BaseActivity {
     RelativeLayout rlEditUserdataSignname;
     @BindView(R.id.rl_edit_userdata_sex)
     RelativeLayout rlEditUserdataSex;
-    private ArrayList<UserTableBean> tableList = new ArrayList<>();
-
-
+    @BindView(R.id.tv_edit_userdata_sex)
+    TextView tvEditUserdataSex;
+    private ArrayList<UserTableBean> tableSexList = new ArrayList<>();
+    private ArrayList<UserTableBean> tableSignList = new ArrayList<>();
+    private Object mOptionTabData;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +54,22 @@ public class EditUserDataActivity extends BaseActivity {
     }
 
     private void initData() {
-        getOptionData();
+        getOptionSexData();
+        getOptionTabData();
     }
 
-    private void getOptionData() {
-        tableList.add(new UserTableBean(1, "男"));
-        tableList.add(new UserTableBean(2, "女"));
+    private void getOptionSexData() {
+        tableSexList.add(new UserTableBean(1, "男"));
+        tableSexList.add(new UserTableBean(2, "女"));
 
+    }
+
+    public void getOptionTabData() {
+        tableSignList.add(new UserTableBean(1, "标签1"));
+        tableSignList.add(new UserTableBean(2, "标签2"));
+        tableSignList.add(new UserTableBean(3, "标签3"));
+        tableSignList.add(new UserTableBean(4, "标签4"));
+        tableSignList.add(new UserTableBean(5, "标签5"));
     }
 
     private void initView() {
@@ -71,13 +82,14 @@ public class EditUserDataActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.rl_edit_userdata_changehead, R.id.rl_edit_userdata_label, R.id.rl_edit_userdata_nick, R.id.rl_edit_userdata_signname,R.id.rl_edit_userdata_sex})
+    @OnClick({R.id.rl_edit_userdata_changehead, R.id.rl_edit_userdata_label, R.id.rl_edit_userdata_nick, R.id.rl_edit_userdata_signname, R.id.rl_edit_userdata_sex})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.rl_edit_userdata_changehead:
                 break;
             case R.id.rl_edit_userdata_label:
+                ChangeUserTable();
 
                 break;
             case R.id.rl_edit_userdata_nick:
@@ -92,9 +104,23 @@ public class EditUserDataActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.rl_edit_userdata_sex:
-                ChangeUserTable();
+                ChangeUserSexTble();
                 break;
         }
+    }
+
+    private void ChangeUserSexTble() {
+        //条件选择器
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(EditUserDataActivity.this, new OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
+                //返回的分别是三个级别的选中位置
+                String tx = tableSexList.get(options1).getPickerViewText();
+                tvEditUserdataSex.setText(tx);
+            }
+        }).build();
+        pvOptions.setPicker(tableSexList);
+        pvOptions.show();
     }
 
     /*更改标签*/
@@ -104,12 +130,11 @@ public class EditUserDataActivity extends BaseActivity {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
-                String tx = tableList.get(options1).getPickerViewText();
-
+                String tx = tableSignList.get(options1).getPickerViewText();
                 tvEditUserdataLabel.setText(tx);
             }
         }).build();
-        pvOptions.setPicker(tableList);
+        pvOptions.setPicker(tableSignList);
         pvOptions.show();
     }
 
