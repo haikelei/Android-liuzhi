@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<include layout="@layout/activity_title"/>
+    <include layout="@layout/activity_title" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="130dp"
-        android:src="@mipmap/btn_publish_photo" />
+        android:src="@mipmap/app_logo" />
 
     <EditText
         android:id="@+id/et_login_phone"
@@ -25,9 +25,9 @@
         android:textSize="14sp" />
 
     <View
+        style="@style/commonDiciderStyle"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="15dp"
-        style="@style/commonDiciderStyle" />
+        android:layout_marginRight="15dp" />
 
     <EditText
         android:id="@+id/et_login_password"
@@ -36,14 +36,14 @@
         android:layout_marginTop="20dp"
         android:background="@null"
         android:hint="请输入密码"
-        android:paddingLeft="16dp"
         android:inputType="textPassword"
+        android:paddingLeft="16dp"
         android:textSize="14sp" />
 
     <View
+        style="@style/commonDiciderStyle"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="15dp"
-        style="@style/commonDiciderStyle" />
+        android:layout_marginRight="15dp" />
 
 
     <TextView
@@ -55,8 +55,8 @@
         android:layout_marginTop="20dp"
         android:background="#ffea00"
         android:gravity="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="登录" />
+        android:text="登录"
+        android:textColor="@color/colorPrimaryDark" />
 
     <RelativeLayout
         android:layout_width="match_parent"

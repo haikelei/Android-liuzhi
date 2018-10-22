@@ -23,6 +23,7 @@ import com.hykj.liuzhi.androidcomponents.ui.activity.DetailCircleImageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyCollectActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyJiFenActivity;
+import com.hykj.liuzhi.androidcomponents.ui.activity.OffLineVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.SetUpActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.CircleAdapter;
 import com.hykj.liuzhi.androidcomponents.utils.RoundImageView;
@@ -65,6 +66,8 @@ public class MineFragment extends Fragment {
     TextView tvMineSead;
     @BindView(R.id.rv)
     RecyclerView rv;
+    @BindView(R.id.tv_mine_offline_down)
+    TextView tvMineOfflineDown;
 
     @Nullable
     @Override
@@ -119,7 +122,7 @@ public class MineFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup, R.id.ll_mine_mycollect, R.id.ll_mine_myfocus, R.id.ll_mine_myfans, R.id.tv_mine_sead})
+    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup, R.id.ll_mine_mycollect, R.id.ll_mine_myfocus, R.id.ll_mine_myfans, R.id.tv_mine_sead,R.id.tv_mine_offline_down})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -148,6 +151,10 @@ public class MineFragment extends Fragment {
 
             case R.id.tv_mine_sead:
                 intent = new Intent(getContext(), MyJiFenActivity.class);
+                break;
+
+            case R.id.tv_mine_offline_down:
+                intent = new Intent(getContext(), OffLineVideoActivity.class);
                 break;
         }
         startActivity(intent);

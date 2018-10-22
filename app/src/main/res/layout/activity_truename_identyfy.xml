@@ -49,6 +49,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <EditText
@@ -96,14 +98,15 @@
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
-                android:src="#f5f5f5" />
+
+                android:src="@mipmap/id_card_img_empty" />
 
             <ImageView
                 android:layout_width="171dp"
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
-                android:src="#f5f5f5" />
+                android:src="@mipmap/id_card_imgup" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -123,7 +126,7 @@
                 android:layout_height="165dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
-                android:src="#f5f5f5" />
+                android:src="@mipmap/id_card_img_show" />
 
             <TextView
                 android:layout_width="match_parent"

@@ -24,6 +24,11 @@ public class TrueNameIdenActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_truename_identyfy);
         ButterKnife.bind(this);
+        initView();
+    }
+
+    private void initView() {
+
     }
 
     @OnClick({R.id.tv_truename_identyfy_back, R.id.tv_truename_identyfy_commit})
