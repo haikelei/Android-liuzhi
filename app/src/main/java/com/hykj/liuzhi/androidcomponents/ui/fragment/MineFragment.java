@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +16,18 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.bean.CircleBean;
+import com.hykj.liuzhi.androidcomponents.ui.activity.DetailCircleImageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyCollectActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyJiFenActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.SetUpActivity;
+import com.hykj.liuzhi.androidcomponents.ui.adapter.CircleAdapter;
 import com.hykj.liuzhi.androidcomponents.utils.RoundImageView;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +63,8 @@ public class MineFragment extends Fragment {
     ImageView tvMineSet;
     @BindView(R.id.tv_mine_sead)
     TextView tvMineSead;
+    @BindView(R.id.rv)
+    RecyclerView rv;
 
     @Nullable
     @Override
@@ -72,6 +82,24 @@ public class MineFragment extends Fragment {
 
     private void initView() {
         restoreInfo();
+
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        ArrayList<CircleBean> list = new ArrayList();
+        list.add(new CircleBean(1));
+        list.add(new CircleBean(2));
+        list.add(new CircleBean(3));
+        list.add(new CircleBean(1));
+        list.add(new CircleBean(2));
+        list.add(new CircleBean(3));
+        CircleAdapter adapter = new CircleAdapter(list);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getContext(), DetailCircleImageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /*获取保存的信息*/
