@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.ui.activity.HomeSearchActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.LoginActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MessageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.HomeFragmentPagerAdapter;
@@ -68,7 +69,7 @@ public class HomeFragment extends Fragment {
                 dialog.show();
                 break;
             case R.id.rl_search:
-                intent = new Intent(getContext(), LoginActivity.class);
+                intent = new Intent(getContext(), HomeSearchActivity.class);
                 startActivity(intent);
                 break;
             case R.id.iv_message:

@@ -28,6 +28,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".androidcomponents.ui.activity.CartActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.DetailCircleImageActivity"></activity>
+        <activity android:name=".androidcomponents.ui.activity.HomeSearchActivity"></activity>
         <!--一键发布界面-->
         <activity
             android:name=".androidcomponents.ui.activity.IssueClumnActivity"
