@@ -26,15 +26,15 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<MutiItem, BaseVi
         addItemType(MutiItem.IMAGE_TEXT_INSIDE, R.layout.layout_adapter_item_image_text_inside);
         addItemType(MutiItem.IMAGE_TEXT_TOP, R.layout.layout_adapter_item_image_text_top);
         addItemType(MutiItem.SECTION_HEADER, R.layout.layout_adapter_section_header);
+        addItemType(MutiItem.SOFT_ARTICLE, R.layout.layout_adapter_section_soft_header);
+        addItemType(MutiItem.MORE, R.layout.layout_adapter_section_soft_header);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, MutiItem item) {
         switch (helper.getItemViewType()) {
             case MutiItem.IMAGE_TEXT_BOTTOM:
-
                 loadImage(helper);
-
                 break;
             case MutiItem.IMAGE_TEXT_INSIDE:
                 loadImage(helper);
@@ -44,6 +44,8 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<MutiItem, BaseVi
                 break;
             case MutiItem.SECTION_HEADER:
 
+                break;
+            case MutiItem.SOFT_ARTICLE:
                 break;
         }
     }

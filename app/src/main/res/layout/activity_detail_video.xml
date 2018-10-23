@@ -10,6 +10,11 @@
         android:id="@+id/jz_video"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <!--中间操作区域-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -151,6 +156,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_download"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -212,5 +218,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
-
+    </LinearLayout>
 </LinearLayout>
