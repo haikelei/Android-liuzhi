@@ -37,10 +37,10 @@ public class OffLineVideoActivity extends BaseActivity {
     }
 
     private void initData() {
-        recyclerOfflineVideo.setLayoutManager(new LinearLayoutManager(this));
+        recyclerOfflineVideo.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         ArrayList list = new ArrayList();
         for (int i = 0; i < 20; i++) {
-            list.add(1);
+            list.add(i);
         }
         OffLineVideoAdapter adapter = new OffLineVideoAdapter(list);
         recyclerOfflineVideo.setAdapter(adapter);

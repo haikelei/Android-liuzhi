@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,12 @@ public class BindEmailActivity extends BaseActivity {
     ImageView ivBindemailBack;
     @BindView(R.id.iv_bindemail_save)
     TextView ivBindemailSave;
+    @BindView(R.id.ll_mine_bindemail_wait)
+    LinearLayout llMineBindemailWait;
+    @BindView(R.id.rl_mine_bindemail_input)
+    RelativeLayout rlMineBindemailInput;
+    @BindView(R.id.tv_mine_bindemail_descrip)
+    TextView tvMineBindemailDescrip;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +41,10 @@ public class BindEmailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.iv_bindemail_save:
-                Toast.makeText(BindEmailActivity.this, "保存", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BindEmailActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
+                rlMineBindemailInput.setVisibility(View.GONE);
+                tvMineBindemailDescrip.setVisibility(View.GONE);
+                llMineBindemailWait.setVisibility(View.VISIBLE);
                 break;
         }
     }
