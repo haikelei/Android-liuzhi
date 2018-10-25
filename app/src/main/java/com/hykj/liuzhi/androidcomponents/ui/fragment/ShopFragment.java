@@ -13,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.bean.GoodDetailBean;
 import com.hykj.liuzhi.androidcomponents.interfaces.GlideImageLoader;
 import com.hykj.liuzhi.androidcomponents.ui.activity.CartActivity;
+import com.hykj.liuzhi.androidcomponents.ui.activity.GoodDetailActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.GoodsAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.ui.widget.MoreGoodsHeader;
@@ -80,6 +82,12 @@ public class ShopFragment extends Fragment {
         mAdapter.addHeaderView(new MoreGoodsHeader(getContext()));
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(new Intent(getContext(), GoodDetailActivity.class));
+            }
+        });
     }
 
     @Override
