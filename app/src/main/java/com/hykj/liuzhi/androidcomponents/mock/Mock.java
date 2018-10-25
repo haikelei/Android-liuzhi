@@ -22,7 +22,7 @@ public class Mock {
         list.add(new MutiItem(MutiItem.IMAGE_TEXT_INSIDE));
         list.add(new MutiItem(MutiItem.IMAGE_TEXT_INSIDE));
         list.add(new MutiItem(MutiItem.IMAGE_TEXT_INSIDE));
-        list.add(new MutiItem(MutiItem.SECTION_HEADER));
+        list.add(new MutiItem(MutiItem.SOFT_ARTICLE));
         list.add(new MutiItem(MutiItem.IMAGE_TEXT_TOP));
         list.add(new MutiItem(MutiItem.IMAGE_TEXT_TOP));
         list.add(new MutiItem(MutiItem.IMAGE_TEXT_TOP));

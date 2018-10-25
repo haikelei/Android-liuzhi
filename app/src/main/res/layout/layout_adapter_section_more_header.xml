@@ -9,17 +9,18 @@
 <TextView
     android:id="@+id/tv"
     android:layout_centerVertical="true"
+    android:text="更多内容"
     android:textSize="15sp"
     android:textColor="#000"
-    android:text="纹理"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
     <ImageView
-        android:src="@mipmap/is_collected"
+        android:layout_marginLeft="4dp"
+        android:src="@mipmap/title_label"
         android:layout_toRightOf="@id/tv"
         android:layout_centerInParent="true"
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
+        android:layout_width="13dp"
+        android:layout_height="13dp" />
     <ImageView
         android:layout_centerVertical="true"
         android:src="@mipmap/more_index"

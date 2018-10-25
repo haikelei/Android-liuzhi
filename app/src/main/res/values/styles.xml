@@ -25,4 +25,10 @@
 
     </style>
 
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/e1</item>
+        <item name="colorControlActivated">@color/e1</item>
+    </style>
+
 </resources>

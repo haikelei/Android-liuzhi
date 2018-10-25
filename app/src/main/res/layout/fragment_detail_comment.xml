@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <View
+            android:background="#e1e1e1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <ImageView
+            android:id="@+id/iv_send"
+            android:layout_marginRight="11dp"
+            android:src="@mipmap/send_message"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:textSize="12sp"
+            android:hint="说点什么哦"
+            android:paddingLeft="10dp"
+            android:theme="@style/MyEditText"
+            android:layout_toLeftOf="@id/iv_send"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        
+
+    </RelativeLayout>
 <android.support.v7.widget.RecyclerView
+    android:layout_above="@id/rl_bottom"
     android:paddingBottom="10dp"
     android:id="@+id/rv"
     android:layout_width="match_parent"

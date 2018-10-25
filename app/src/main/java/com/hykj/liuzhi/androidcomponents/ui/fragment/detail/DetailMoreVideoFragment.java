@@ -39,7 +39,7 @@ public class DetailMoreVideoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail_comment, container, false);
+        View view = inflater.inflate(R.layout.fragment_detail_video, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
