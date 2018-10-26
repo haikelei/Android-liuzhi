@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.bean.CircleBean;
+import com.hykj.liuzhi.androidcomponents.ui.activity.AttentionActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailCircleImageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyCollectActivity;
@@ -141,12 +142,15 @@ public class MineFragment extends Fragment {
                 break;
 
             case R.id.ll_mine_myfocus:
-                intent = new Intent(getContext(), MyCollectActivity.class);
+                //关注
+                intent = new Intent(getContext(), AttentionActivity.class);
+                intent.putExtra("type","0");
                 break;
 
             case R.id.ll_mine_myfans:
 //                intent = new Intent(getContext(), SQLactivity.class);
-                intent = new Intent(getContext(), MyCollectActivity.class);
+                intent = new Intent(getContext(), AttentionActivity.class);
+                intent.putExtra("type","1");
                 break;
 
             case R.id.tv_mine_sead:

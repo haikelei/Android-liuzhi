@@ -9,7 +9,7 @@
         <TextView
             android:textSize="14sp"
             android:textColor="#414141"
-            android:id="@+id/tv_cancel"
+            android:id="@+id/tv_homesearch_cancel"
             android:layout_marginRight="11dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"

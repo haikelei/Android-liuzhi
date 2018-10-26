@@ -19,6 +19,7 @@ import com.hykj.liuzhi.androidcomponents.bean.GoodDetailBean;
 import com.hykj.liuzhi.androidcomponents.interfaces.GlideImageLoader;
 import com.hykj.liuzhi.androidcomponents.ui.activity.CartActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.GoodDetailActivity;
+import com.hykj.liuzhi.androidcomponents.ui.activity.LoginActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.GoodsAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.ui.widget.MoreGoodsHeader;
@@ -96,14 +97,19 @@ public class ShopFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.iv_cart, R.id.rl_search})
+    @OnClick({R.id.iv_cart, R.id.rl_search, R.id.search_area})
     public void onViewClicked(View view) {
+        Intent intent=null;
         switch (view.getId()) {
             case R.id.iv_cart:
-                Intent intent = new Intent(getContext(), CartActivity.class);
+                intent= new Intent(getContext(), CartActivity.class);
                 startActivity(intent);
                 break;
             case R.id.rl_search:
+                break;
+            case R.id.search_area:
+                intent= new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
                 break;
         }
     }

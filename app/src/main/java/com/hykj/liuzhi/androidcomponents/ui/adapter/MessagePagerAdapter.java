@@ -5,13 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.FashionFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.PlayFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.RecommendFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.home.TextureFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.message.NotifyFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.message.TradeInfoFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.message.UserMessageFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.collect.AdvertorialFragment;
 
 import java.util.ArrayList;
 
@@ -29,13 +23,15 @@ public class MessagePagerAdapter extends FragmentPagerAdapter {
     public MessagePagerAdapter(FragmentManager fm) {
         super(fm);
         list = new ArrayList<>();
-        list.add(new NotifyFragment());
-        list.add(new UserMessageFragment());
-        list.add(new TradeInfoFragment());
+        list.add(new AdvertorialFragment());
+        list.add(new AdvertorialFragment());
+        list.add(new AdvertorialFragment());
+        list.add(new AdvertorialFragment());
         titleList = new ArrayList<>();
-        titleList.add("平台通知");
-        titleList.add("用户消息");
-        titleList.add("交易信息");
+        titleList.add("软文");
+        titleList.add("美图");
+        titleList.add("视频");
+        titleList.add("商品");
     }
 
     @Override

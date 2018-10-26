@@ -3,6 +3,7 @@ package com.hykj.liuzhi.androidcomponents.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -55,7 +56,7 @@ public class EditUserDataActivity extends BaseActivity {
 
     private void initData() {
         getOptionSexData();
-        getOptionTabData();
+
     }
 
     private void getOptionSexData() {
@@ -64,13 +65,7 @@ public class EditUserDataActivity extends BaseActivity {
 
     }
 
-    public void getOptionTabData() {
-        tableSignList.add(new UserTableBean(1, "标签1"));
-        tableSignList.add(new UserTableBean(2, "标签2"));
-        tableSignList.add(new UserTableBean(3, "标签3"));
-        tableSignList.add(new UserTableBean(4, "标签4"));
-        tableSignList.add(new UserTableBean(5, "标签5"));
-    }
+
 
     private void initView() {
         new TitleBuilder(this).setTitleText("编辑主页").setLeftIco(R.mipmap.common_black_back).setLeftIcoListening(new View.OnClickListener() {
@@ -125,18 +120,21 @@ public class EditUserDataActivity extends BaseActivity {
 
     /*更改标签*/
     private void ChangeUserTable() {
-        //条件选择器
-        OptionsPickerView pvOptions = new OptionsPickerBuilder(EditUserDataActivity.this, new OnOptionsSelectListener() {
-            @Override
-            public void onOptionsSelect(int options1, int option2, int options3, View v) {
-                //返回的分别是三个级别的选中位置
-                String tx = tableSignList.get(options1).getPickerViewText();
-                tvEditUserdataLabel.setText(tx);
-            }
-        }).build();
-        pvOptions.setPicker(tableSignList);
-        pvOptions.show();
+        Intent intent = new Intent(this,ChangeUserTableActivity.class);
+        startActivityForResult(intent,0);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0){
+            if (data != null){
+                String text = data.getStringExtra("text");
+                if (!TextUtils.isEmpty(text)){
+                    tvEditUserdataLabel.setText(text);
+                }
+            }
+        }
+    }
 
 }

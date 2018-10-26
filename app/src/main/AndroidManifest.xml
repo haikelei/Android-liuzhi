@@ -79,6 +79,10 @@
         <activity android:name=".androidcomponents.ui.activity.HowToGetSeedActivity" />
         <!--离线视频界面-->
         <activity android:name=".androidcomponents.ui.activity.OffLineVideoActivity"/>
+        <!--关注界面-->
+        <activity android:name=".androidcomponents.ui.activity.AttentionActivity"/>
+        <!--修改标签界面-->
+        <activity android:name=".androidcomponents.ui.activity.ChangeUserTableActivity"/>
 
     </application>
 
