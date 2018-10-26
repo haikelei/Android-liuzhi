@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,20 +15,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.flyco.tablayout.SlidingTabLayout;
 import com.hykj.liuzhi.R;
-import com.hykj.liuzhi.androidcomponents.bean.CircleBean;
 import com.hykj.liuzhi.androidcomponents.ui.activity.AttentionActivity;
-import com.hykj.liuzhi.androidcomponents.ui.activity.DetailCircleImageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyCollectActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyJiFenActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.OffLineVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.SetUpActivity;
-import com.hykj.liuzhi.androidcomponents.ui.adapter.CircleAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.adapter.MinePagerAdapter;
 import com.hykj.liuzhi.androidcomponents.utils.RoundImageView;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,45 +60,39 @@ public class MineFragment extends Fragment {
     ImageView tvMineSet;
     @BindView(R.id.tv_mine_sead)
     TextView tvMineSead;
-    @BindView(R.id.rv)
-    RecyclerView rv;
     @BindView(R.id.tv_mine_offline_down)
     TextView tvMineOfflineDown;
+    @BindView(R.id.tab_layout_mine)
+    SlidingTabLayout tabLayoutMine;
+    @BindView(R.id.view_pager_mine)
+    ViewPager viewPagerMine;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
         unbinder = ButterKnife.bind(this, view);
+        initView();
+        initData();
         return view;
+
+    }
+
+    private void initData() {
+        viewPagerMine.setAdapter(new MinePagerAdapter(getActivity().getSupportFragmentManager()));
+        tabLayoutMine.setViewPager(viewPagerMine);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        initView();
+
     }
 
     private void initView() {
         restoreInfo();
 
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        ArrayList<CircleBean> list = new ArrayList();
-        list.add(new CircleBean(1));
-        list.add(new CircleBean(2));
-        list.add(new CircleBean(3));
-        list.add(new CircleBean(1));
-        list.add(new CircleBean(2));
-        list.add(new CircleBean(3));
-        CircleAdapter adapter = new CircleAdapter(list);
-        rv.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(getContext(), DetailCircleImageActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     /*获取保存的信息*/
@@ -123,7 +112,7 @@ public class MineFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup, R.id.ll_mine_mycollect, R.id.ll_mine_myfocus, R.id.ll_mine_myfans, R.id.tv_mine_sead,R.id.tv_mine_offline_down})
+    @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup, R.id.ll_mine_mycollect, R.id.ll_mine_myfocus, R.id.ll_mine_myfans, R.id.tv_mine_sead, R.id.tv_mine_offline_down})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -144,13 +133,13 @@ public class MineFragment extends Fragment {
             case R.id.ll_mine_myfocus:
                 //关注
                 intent = new Intent(getContext(), AttentionActivity.class);
-                intent.putExtra("type","0");
+                intent.putExtra("type", "0");
                 break;
 
             case R.id.ll_mine_myfans:
 //                intent = new Intent(getContext(), SQLactivity.class);
                 intent = new Intent(getContext(), AttentionActivity.class);
-                intent.putExtra("type","1");
+                intent.putExtra("type", "1");
                 break;
 
             case R.id.tv_mine_sead:

@@ -5,33 +5,27 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.hykj.liuzhi.androidcomponents.ui.fragment.message.NotifyFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.message.TradeInfoFragment;
-import com.hykj.liuzhi.androidcomponents.ui.fragment.message.UserMessageFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.mine.MineCameFragment;
 
 import java.util.ArrayList;
 
-/**
- * @author: lujialei
- * @date: 2018/9/27
- * @describe:
- */
-
-
-public class MessagePagerAdapter extends FragmentPagerAdapter {
+public class MinePagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> list;
     private ArrayList<String> titleList;
-    public MessagePagerAdapter(FragmentManager fm) {
+
+    public MinePagerAdapter(FragmentManager fm) {
         super(fm);
         list = new ArrayList<>();
-        list.add(new NotifyFragment());
-        list.add(new UserMessageFragment());
-        list.add(new TradeInfoFragment());
+        list.add(new MineCameFragment());
+        list.add(new MineCameFragment());
+        list.add(new MineCameFragment());
+        list.add(new MineCameFragment());
         titleList = new ArrayList<>();
-        titleList.add("平台通知");
-        titleList.add("用户消息");
-        titleList.add("交易信息");
+        titleList.add("拍照");
+        titleList.add("相册");
+        titleList.add("浏览记录");
+        titleList.add("我的订单");
     }
 
     @Override

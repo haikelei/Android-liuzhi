@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.hykj.liuzhi.R;
-import com.hykj.liuzhi.androidcomponents.ui.adapter.MessagePagerAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.adapter.CollectPagerAdapter;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
 
 import butterknife.BindView;
@@ -30,7 +30,7 @@ public class MyCollectActivity extends BaseActivity {
     }
 
     private void iniData() {
-        viewPagerMycollect.setAdapter(new MessagePagerAdapter(getSupportFragmentManager()));
+        viewPagerMycollect.setAdapter(new CollectPagerAdapter(getSupportFragmentManager()));
         tabLayoutMycollect.setViewPager(viewPagerMycollect);
     }
 
@@ -41,7 +41,6 @@ public class MyCollectActivity extends BaseActivity {
                 finish();
             }
         });
-        viewPagerMycollect.setAdapter(new MessagePagerAdapter(getSupportFragmentManager()));
-        tabLayoutMycollect.setViewPager(viewPagerMycollect);
+
     }
 }

@@ -41,9 +41,12 @@ public class EditUserDataActivity extends BaseActivity {
     RelativeLayout rlEditUserdataSex;
     @BindView(R.id.tv_edit_userdata_sex)
     TextView tvEditUserdataSex;
+    @BindView(R.id.rl_edit_userdata_email)
+    RelativeLayout rlEditUserdataEmail;
     private ArrayList<UserTableBean> tableSexList = new ArrayList<>();
     private ArrayList<UserTableBean> tableSignList = new ArrayList<>();
     private Object mOptionTabData;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +69,6 @@ public class EditUserDataActivity extends BaseActivity {
     }
 
 
-
     private void initView() {
         new TitleBuilder(this).setTitleText("编辑主页").setLeftIco(R.mipmap.common_black_back).setLeftIcoListening(new View.OnClickListener() {
             @Override
@@ -77,7 +79,8 @@ public class EditUserDataActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.rl_edit_userdata_changehead, R.id.rl_edit_userdata_label, R.id.rl_edit_userdata_nick, R.id.rl_edit_userdata_signname, R.id.rl_edit_userdata_sex})
+    @OnClick({R.id.rl_edit_userdata_changehead, R.id.rl_edit_userdata_label, R.id.rl_edit_userdata_nick,
+            R.id.rl_edit_userdata_signname, R.id.rl_edit_userdata_sex,R.id.rl_edit_userdata_email})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -101,6 +104,11 @@ public class EditUserDataActivity extends BaseActivity {
             case R.id.rl_edit_userdata_sex:
                 ChangeUserSexTble();
                 break;
+
+            case R.id.rl_edit_userdata_email:
+                intent = new Intent(EditUserDataActivity.this, BindEmailActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -120,17 +128,17 @@ public class EditUserDataActivity extends BaseActivity {
 
     /*更改标签*/
     private void ChangeUserTable() {
-        Intent intent = new Intent(this,ChangeUserTableActivity.class);
-        startActivityForResult(intent,0);
+        Intent intent = new Intent(this, ChangeUserTableActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0){
-            if (data != null){
+        if (requestCode == 0) {
+            if (data != null) {
                 String text = data.getStringExtra("text");
-                if (!TextUtils.isEmpty(text)){
+                if (!TextUtils.isEmpty(text)) {
                     tvEditUserdataLabel.setText(text);
                 }
             }

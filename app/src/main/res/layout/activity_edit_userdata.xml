@@ -168,6 +168,7 @@
                 android:layout_marginTop="5dp" />
 
             <RelativeLayout
+                android:id="@+id/rl_edit_userdata_email"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:layout_marginTop="10dp">
