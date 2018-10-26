@@ -9,22 +9,19 @@ import com.hykj.liuzhi.androidcomponents.ui.fragment.mine.MineCameFragment;
 
 import java.util.ArrayList;
 
-public class MinePagerAdapter extends FragmentPagerAdapter {
+public class PersonDetailAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> list;
     private ArrayList<String> titleList;
-    public MinePagerAdapter(FragmentManager fm) {
+    public PersonDetailAdapter(FragmentManager fm) {
         super(fm);
         list = new ArrayList<>();
         list.add(new MineCameFragment());
         list.add(new MineCameFragment());
-        list.add(new MineCameFragment());
-        list.add(new MineCameFragment());
+
         titleList = new ArrayList<>();
         titleList.add("拍照");
         titleList.add("相册");
-        titleList.add("浏览记录");
-        titleList.add("我的订单");
 
 
 

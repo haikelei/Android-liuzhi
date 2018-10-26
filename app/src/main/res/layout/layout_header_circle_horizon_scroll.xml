@@ -2,114 +2,134 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<com.luck.picture.lib.widget.SquareRelativeLayout
-    android:layout_weight="1"
-    android:layout_width="0dp"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/iv0"
-                android:scaleType="centerCrop"
-                android:layout_width="55dp"
-                android:layout_height="55dp" />
-            <ImageView
-                android:src="@mipmap/icon_1th"
-                android:layout_width="28dp"
-                android:layout_height="28dp" />
 
-        </RelativeLayout>
-
-        <TextView
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center"
-            android:textSize="12sp"
-            android:textColor="#414141"
-            android:text="小仙女"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        
-    </LinearLayout>
-    
-</com.luck.picture.lib.widget.SquareRelativeLayout>
     <com.luck.picture.lib.widget.SquareRelativeLayout
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
         <LinearLayout
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
             <RelativeLayout
+                android:id="@+id/rl_header_user1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <ImageView
+                    android:id="@+id/iv0"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/iv1"
-                    android:scaleType="centerCrop"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp" />
+                    android:scaleType="centerCrop" />
+
                 <ImageView
-                    android:src="@mipmap/icon_2nd"
                     android:layout_width="28dp"
-                    android:layout_height="28dp" />
+                    android:layout_height="28dp"
+                    android:src="@mipmap/icon_1th" />
 
             </RelativeLayout>
+
             <TextView
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:textSize="12sp"
-                android:textColor="#414141"
-                android:text="summer"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="小仙女"
+                android:textColor="#414141"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
     </com.luck.picture.lib.widget.SquareRelativeLayout>
+
     <com.luck.picture.lib.widget.SquareRelativeLayout
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
         <LinearLayout
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
             <RelativeLayout
+                android:id="@+id/rl_header_user2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <ImageView
+                    android:id="@+id/iv1"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/iv2"
-                    android:scaleType="centerCrop"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp" />
+                    android:scaleType="centerCrop" />
+
                 <ImageView
-                    android:src="@mipmap/icon_3rd"
                     android:layout_width="28dp"
-                    android:layout_height="28dp" />
+                    android:layout_height="28dp"
+                    android:src="@mipmap/icon_2nd" />
 
             </RelativeLayout>
+
             <TextView
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:textSize="12sp"
-                android:textColor="#414141"
-                android:text="nimo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="summer"
+                android:textColor="#414141"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </com.luck.picture.lib.widget.SquareRelativeLayout>
+
+    <com.luck.picture.lib.widget.SquareRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_header_user3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv2"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@mipmap/icon_3rd" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="nimo"
+                android:textColor="#414141"
+                android:textSize="12sp" />
 
         </LinearLayout>
 

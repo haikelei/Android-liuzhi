@@ -75,6 +75,8 @@ public class CircleFragment extends Fragment {
                 .start();
         adapter.addHeaderView(bannerHeader);
         adapter.addHeaderView(new HeaderCircleScroll(getContext()));
+
+
         rv.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override

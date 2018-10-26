@@ -30,7 +30,7 @@
         <activity android:name=".androidcomponents.ui.activity.DetailCircleImageActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.HomeSearchActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.DetailSoftArticleActivity"></activity>
-       <activity android:name=".androidcomponents.ui.activity.ReportActivity"></activity>
+        <activity android:name=".androidcomponents.ui.activity.ReportActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.GoodDetailActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.ConfirmOrderActivity"></activity>
         <!--一键发布界面-->
@@ -78,11 +78,14 @@
         <!--怎么获得神奇种子界面-->
         <activity android:name=".androidcomponents.ui.activity.HowToGetSeedActivity" />
         <!--离线视频界面-->
-        <activity android:name=".androidcomponents.ui.activity.OffLineVideoActivity"/>
+        <activity android:name=".androidcomponents.ui.activity.OffLineVideoActivity" />
         <!--关注界面-->
-        <activity android:name=".androidcomponents.ui.activity.AttentionActivity"/>
+        <activity android:name=".androidcomponents.ui.activity.AttentionActivity" />
         <!--修改标签界面-->
-        <activity android:name=".androidcomponents.ui.activity.ChangeUserTableActivity"/>
+        <activity android:name=".androidcomponents.ui.activity.ChangeUserTableActivity" />
+        <!--其他用户详情界面-->
+        <activity android:name=".androidcomponents.ui.activity.PersonDetailActivity" />
+
 
     </application>
 
