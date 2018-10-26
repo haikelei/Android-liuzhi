@@ -48,6 +48,7 @@
             android:layout_height="wrap_content" />
         
         <ImageView
+            android:id="@+id/iv_report"
             android:layout_marginTop="12dp"
             android:layout_alignParentRight="true"
             android:src="@mipmap/report"

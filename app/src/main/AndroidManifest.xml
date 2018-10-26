@@ -29,6 +29,10 @@
         <activity android:name=".androidcomponents.ui.activity.CartActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.DetailCircleImageActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.HomeSearchActivity"></activity>
+        <activity android:name=".androidcomponents.ui.activity.DetailSoftArticleActivity"></activity>
+       <activity android:name=".androidcomponents.ui.activity.ReportActivity"></activity>
+        <activity android:name=".androidcomponents.ui.activity.GoodDetailActivity"></activity>
+        <activity android:name=".androidcomponents.ui.activity.ConfirmOrderActivity"></activity>
         <!--一键发布界面-->
         <activity
             android:name=".androidcomponents.ui.activity.IssueClumnActivity"

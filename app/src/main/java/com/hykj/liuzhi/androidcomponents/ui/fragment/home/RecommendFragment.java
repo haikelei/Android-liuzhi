@@ -15,11 +15,14 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.interfaces.GlideImageLoader;
 import com.hykj.liuzhi.androidcomponents.mock.Mock;
+import com.hykj.liuzhi.androidcomponents.ui.activity.DetailSoftArticleActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.RecommendAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.ui.widget.CustomLoadMoreView;
 import com.youth.banner.Banner;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +41,7 @@ public class RecommendFragment extends Fragment {
     RecyclerView rv;
     Unbinder unbinder;
     RecommendAdapter mAdapter;
+    ArrayList list = Mock.getRecommendList();
 
     @Nullable
     @Override
@@ -59,8 +63,14 @@ public class RecommendFragment extends Fragment {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(getContext(), DetailVideoActivity.class);
-                startActivity(intent);
+                if (position>=4){
+                    Intent intent = new Intent(getContext(), DetailSoftArticleActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getContext(), DetailVideoActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
         mAdapter.setLoadMoreView(new CustomLoadMoreView());
@@ -81,7 +91,7 @@ public class RecommendFragment extends Fragment {
         rv.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mAdapter.addData(Mock.getRecommendList());
+                mAdapter.addData(list);
                 mAdapter.loadMoreComplete();
             }
         }, 2000);
