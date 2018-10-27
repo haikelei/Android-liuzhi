@@ -33,6 +33,8 @@
         <activity android:name=".androidcomponents.ui.activity.ReportActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.GoodDetailActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.ConfirmOrderActivity"></activity>
+        <activity android:name=".androidcomponents.ui.activity.WatchHistoryActivity"/>
+        <activity android:name=".androidcomponents.ui.activity.MyOrderActivity"/>
         <!--一键发布界面-->
         <activity
             android:name=".androidcomponents.ui.activity.IssueClumnActivity"
