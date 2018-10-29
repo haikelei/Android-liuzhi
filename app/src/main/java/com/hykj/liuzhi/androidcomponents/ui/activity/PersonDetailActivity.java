@@ -46,7 +46,6 @@ public class PersonDetailActivity extends BaseActivity {
         viewPagerPersonDetail.setAdapter(new PersonDetailAdapter(getSupportFragmentManager()));
         tabLayoutPersonDetail.setViewPager(viewPagerPersonDetail);
     }
-
     private void initView() {
 
     }
