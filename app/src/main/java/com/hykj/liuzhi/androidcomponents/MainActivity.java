@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
                     Intent intent = new Intent(MainActivity.this, IssueClumnActivity.class);
                     intent.putExtra("clumnPath", selectList.get(0).getPath());
+                    intent.putExtra("title", "发布美图");
                     startActivityForResult(intent, 0x0011);
                     break;
             }

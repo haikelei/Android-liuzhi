@@ -1,11 +1,13 @@
 package com.hykj.liuzhi.androidcomponents.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.AttentionAdapter;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
@@ -53,6 +55,13 @@ public class AttentionActivity extends BaseActivity {
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new AttentionAdapter(this, list);
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent=new Intent(AttentionActivity.this, PersonDetailActivity.class);
+                startActivity(intent);
+            }
+        });
 //        mAdapter.setEmptyView(initEmptyView());
         recyclerView.setAdapter(mAdapter);
     }
