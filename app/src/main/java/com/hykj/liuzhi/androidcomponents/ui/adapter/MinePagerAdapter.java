@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.hykj.liuzhi.androidcomponents.ui.fragment.MyOrderFragment;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.WatchHistoryFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.mine.MineCameFragment;
 
 import java.util.ArrayList;
@@ -18,8 +20,8 @@ public class MinePagerAdapter extends FragmentPagerAdapter {
         list = new ArrayList<>();
         list.add(new MineCameFragment());
         list.add(new MineCameFragment());
-        list.add(new MineCameFragment());
-        list.add(new MineCameFragment());
+        list.add(new WatchHistoryFragment());
+        list.add(new MyOrderFragment());
         titleList = new ArrayList<>();
         titleList.add("拍照");
         titleList.add("相册");
