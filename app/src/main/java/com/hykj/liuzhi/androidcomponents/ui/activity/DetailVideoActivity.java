@@ -56,6 +56,12 @@ public class DetailVideoActivity extends BaseActivity {
         mJzvdStd = findViewById(R.id.jz_video);
         mJzvdStd.setUp(source1, ""
                 , JzvdStd.SCREEN_WINDOW_NORMAL);
+        mJzvdStd.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Glide.with(this)
                 .load(pic)
                 .into(mJzvdStd.thumbImageView);
