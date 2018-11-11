@@ -35,6 +35,7 @@ public class IssueClumnActivity extends BaseActivity {
     private List<LocalMedia> selectList = new ArrayList<>();
     private int themeId;
     private GridImageAdapter mGridImageAdapter;
+    private String mTitle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,12 +47,10 @@ public class IssueClumnActivity extends BaseActivity {
     }
 
     private void initView() {
-        new TitleBuilder(IssueClumnActivity.this).setTitleText("发布美图").setLeftIco(R.mipmap.common_black_back).setLeftIcoListening(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        Intent intent = getIntent();
+        mTitle = intent.getStringExtra("title");
+
+
         themeId = R.style.picture_default_style;
         FullyGridLayoutManager manager = new FullyGridLayoutManager(IssueClumnActivity.this, 4, GridLayoutManager.VERTICAL, false);
         recyclerIssueColumn.setLayoutManager(manager);
@@ -88,7 +87,15 @@ public class IssueClumnActivity extends BaseActivity {
     }
 
     private void initData() {
+        new TitleBuilder(IssueClumnActivity.this).setTitleText(mTitle).setLeftIco(R.mipmap.common_black_back).setLeftIcoListening(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
 
+
+
+            }
+        });
     }
 
     private GridImageAdapter.onAddPicClickListener onAddPicClickListener = new GridImageAdapter.onAddPicClickListener() {

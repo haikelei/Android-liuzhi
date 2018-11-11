@@ -33,9 +33,6 @@ import okhttp3.Response;
 
 /**
  * <p>描述：处理het token、签名等异常</p>
- * 作者： zhouyou<br>
- * 日期： 2017/5/4 21:02 <br>
- * 版本： v1.0<br>
  */
 public class TokenInterceptor extends BaseExpiredInterceptor {
     private ApiResult apiResult;

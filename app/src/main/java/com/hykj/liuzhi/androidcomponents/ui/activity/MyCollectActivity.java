@@ -30,7 +30,8 @@ public class MyCollectActivity extends BaseActivity {
     }
 
     private void iniData() {
-        viewPagerMycollect.setAdapter(new CollectPagerAdapter(getSupportFragmentManager()));
+        CollectPagerAdapter collectPagerAdapter = new CollectPagerAdapter(getSupportFragmentManager());
+        viewPagerMycollect.setAdapter(collectPagerAdapter);
         tabLayoutMycollect.setViewPager(viewPagerMycollect);
     }
 

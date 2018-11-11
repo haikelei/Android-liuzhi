@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hykj.liuzhi.R;
@@ -29,6 +30,8 @@ public class GoodDetailActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.tv_buy)
     TextView tvBuy;
+    @BindView(R.id.iv_left)
+    ImageView ivLeft;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +46,13 @@ public class GoodDetailActivity extends BaseActivity {
         tvBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(),ConfirmOrderActivity.class));
+                startActivity(new Intent(getBaseContext(), ConfirmOrderActivity.class));
+            }
+        });
+        ivLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
