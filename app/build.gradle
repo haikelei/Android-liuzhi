@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile project(path: ':libraryNet')
+//    compile project(path: ':libraryNet')
     compile project(path: ':libraryAdapter')
     compile project(path: ':libraryVideo')
     compile 'com.jakewharton:butterknife:8.6.0'
@@ -67,4 +67,5 @@ dependencies {
     implementation 'com.contrarywind:Android-PickerView:4.1.4'    /* 滚轮时间  地址*/
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.greenrobot:greendao-generator:3.2.2'
+    implementation 'com.zhouyou:rxeasyhttp:2.1.2'
 }
