@@ -33,7 +33,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-
         initNet();
         initGreenDao();
 
@@ -49,7 +48,7 @@ public class MyApplication extends Application {
         EasyHttp.init(this);
 
         //这里涉及到安全我把url去掉了，demo都是调试通的
-        String Url = "http://www.xxx.com";
+        String Url = "http://101.37.145.45 ";
 
 
         //设置请求头

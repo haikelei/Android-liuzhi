@@ -1,9 +1,13 @@
 package com.hykj.liuzhi.androidcomponents.net;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.hykj.liuzhi.androidcomponents.bean.LiuZhiBean;
 import com.zhouyou.http.callback.CallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
  * @author: lujialei
@@ -13,6 +17,8 @@ import java.lang.reflect.ParameterizedType;
 
 
 public abstract class LiuZhiCallBack<T> extends CallBack<String> {
+    Gson gson = new Gson();
+
     @Override
     public void onStart() {
 
@@ -25,11 +31,23 @@ public abstract class LiuZhiCallBack<T> extends CallBack<String> {
 
     @Override
     public void onSuccess(String s) {
-        Gson gson = new Gson();
-        Class<T> tClass = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        T t = gson.fromJson(s,tClass);
-        onSuc(t);
+        return;
+//        LiuZhiBean bean = gson.fromJson(s,LiuZhiBean.class);
+//        if (bean==null){
+//            return;
+//        }
+//        if (bean.code!=0){
+//            onError(new ApiException());
+//        }
     }
 
-    protected abstract void onSuc(T t);
+    @Override
+    public void onError(ApiException e) {
+
+    }
+
+
+
+
+
 }
