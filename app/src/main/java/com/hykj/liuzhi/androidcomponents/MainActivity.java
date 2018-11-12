@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.bean.BannerBean;
 import com.hykj.liuzhi.androidcomponents.net.HttpManager;
-import com.hykj.liuzhi.androidcomponents.net.LiuZhiCallBack;
 import com.hykj.liuzhi.androidcomponents.ui.activity.IssueClumnActivity;
 import com.hykj.liuzhi.androidcomponents.ui.bottomnavigation.BottomNavigationView;
 import com.luck.picture.lib.PictureSelector;
@@ -37,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
                 .params("page","1")
                 .params("number","20")
                 .params("type","1")
-                .execute(new LiuZhiCallBack<BannerBean>() {
+                .execute(new SimpleCallBack<BannerBean>() {
                     @Override
-                    protected void onSuc(BannerBean bannerBean) {
+                    public void onError(ApiException e) {
 
                     }
 
                     @Override
-                    public void onError(ApiException e) {
+                    public void onSuccess(BannerBean bannerBean) {
 
                     }
                 });
