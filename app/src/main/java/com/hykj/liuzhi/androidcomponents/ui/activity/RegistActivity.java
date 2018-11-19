@@ -1,15 +1,19 @@
 package com.hykj.liuzhi.androidcomponents.ui.activity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
+import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
+import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
 
 import butterknife.BindView;
@@ -72,12 +76,40 @@ public class RegistActivity extends BaseActivity {
     }
 
     private void saveUserData() {
-        // TODO Auto-generated method stub
-        SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
-        editor.putString("phone", etRegistPhone.getText().toString().trim());
-        editor.putString("password", etRegistPassword.getText().toString().trim());
-        editor.commit();
-        finish();
+        if (TextUtils.isEmpty(etRegistPhone.getText().toString().trim())){
+            Toast.makeText(this, "请输入手机号", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(etRegistAuthcode.getText().toString().trim())){
+            Toast.makeText(this, "请输入验证码", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        if (TextUtils.isEmpty(etRegistPassword.getText().toString().trim())){
+            Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (etRegistPassword.getText().toString().trim().length() < 6){
+            Toast.makeText(this, "密码至少6位字符", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        HttpHelper.register(etRegistPhone.getText().toString().trim(), etRegistAuthcode.getText().toString().trim(), etRegistPassword.getText().toString().trim(), new HttpHelper.HttpUtilsCallBack<String>() {
+            @Override
+            public void onFailure(String failure) {
+                Toast.makeText(RegistActivity.this,failure, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSucceed(String succeed) {
+                Toast.makeText(RegistActivity.this,"注册成功", Toast.LENGTH_SHORT).show();
+                LocalInfoUtils.saveUserInfo(etRegistPhone.getText().toString().trim(), etRegistAuthcode.getText().toString().trim(),etRegistPassword.getText().toString().trim());
+                finish();
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(RegistActivity.this, ErrorStateCodeUtils.getRegisterErrorMessage(error), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -5,10 +5,12 @@ import android.content.Context;
 
 import com.hykj.liuzhi.greendao.gen.DaoMaster;
 import com.hykj.liuzhi.greendao.gen.DaoSession;
+import com.orhanobut.logger.Logger;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.SerializableDiskConverter;
 import com.zhouyou.http.model.HttpHeaders;
 import com.zhouyou.http.model.HttpParams;
+import com.orhanobut.logger.AndroidLogAdapter;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -32,6 +34,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Logger.addLogAdapter(new AndroidLogAdapter());
         app = this;
         initNet();
         initGreenDao();

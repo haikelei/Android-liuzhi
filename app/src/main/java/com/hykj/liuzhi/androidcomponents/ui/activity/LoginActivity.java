@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,7 +13,14 @@ import android.widget.Toast;
 
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.MainActivity;
+import com.hykj.liuzhi.androidcomponents.bean.LoginEntity;
+import com.hykj.liuzhi.androidcomponents.bean.UserInfo;
+import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
+import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
+import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
+import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +45,7 @@ public class LoginActivity extends BaseActivity {
     TextView tvLoginLogin;
     private String mLoginPhone;
     private String mLoginPass;
+    private Object userself;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +53,7 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         initView();
         ButterKnife.bind(this);
+
     }
 
     private void initView() {
@@ -84,25 +94,54 @@ public class LoginActivity extends BaseActivity {
         if (TextUtils.isEmpty(mLoginPhone) || TextUtils.isEmpty(mLoginPass)) {
             Toast.makeText(this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
         } else {
-            SharedPreferences userData = getSharedPreferences("data", MODE_PRIVATE);
+            HttpHelper.login(mLoginPhone, mLoginPass, new HttpHelper.HttpUtilsCallBack<String>() {
+                @Override
+                public void onFailure(String failure) {
+                    Toast.makeText(LoginActivity.this, failure, Toast.LENGTH_SHORT).show();
+                }
 
-            if (mLoginPhone.equals(userData.getString("phone", "")) && mLoginPass.equals(userData.getString("password", ""))) {
-                SharedPreferences.Editor editor = userData.edit();
-                editor.commit();
-                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(this, "账号或者密码不正确", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onSucceed(String succeed) {
+                    LoginEntity entity = FastJSONHelper.getPerson(succeed, LoginEntity.class);
+                    if (entity != null) {
+                        UserInfo userInfo = LocalInfoUtils.getUserInfo();
+                        LocalInfoUtils.saveUserInfo(mLoginPhone, userInfo.getCode(), mLoginPass);
+                        getUserself();
+//                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    }
+                }
 
-            }
+                @Override
+                public void onError(String error) {
+                    Toast.makeText(LoginActivity.this, ErrorStateCodeUtils.getRegisterErrorMessage(error), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
 
     }
 
 
+    public void getUserself() {
+        HttpHelper.getUserself(new HttpHelper.HttpUtilsCallBack<String>() {
+            @Override
+            public void onFailure(String failure) {
+                Toast.makeText(LoginActivity.this, failure, Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onSucceed(String succeed) {
 
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(LoginActivity.this, ErrorStateCodeUtils.getRegisterErrorMessage(error), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void setUserself(Object userself) {
+        this.userself = userself;
+    }
 }
