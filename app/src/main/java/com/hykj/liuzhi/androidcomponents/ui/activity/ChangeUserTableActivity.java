@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hykj.liuzhi.R;
-import com.hykj.liuzhi.androidcomponents.ui.widget.FlowLayout;
+import com.hykj.liuzhi.androidcomponents.ui.widget.AutoDisplayChildViewContainer;
 import com.hykj.liuzhi.androidcomponents.utils.DensityUtils;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
 
@@ -31,6 +32,7 @@ public class ChangeUserTableActivity extends BaseActivity {
     @BindView(R.id.framelayout)
     FrameLayout mFrameLayout;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,8 @@ public class ChangeUserTableActivity extends BaseActivity {
     }
     String[] datas = {"太阳眼镜","健身器","拉杆箱","行李箱","iphone 7 plus" ,"棉麻素色床品","桌面电风扇","鼠标","机械键盘","键盘","键鼠套装"};
     private void initData() {
-        FlowLayout flowLayout = new FlowLayout(this);
+
+        AutoDisplayChildViewContainer flowLayout = new AutoDisplayChildViewContainer(this);
         flowLayout.removeAllViews();
         int padding = DensityUtils.dip2px(this,0);
         flowLayout.setPadding(padding, padding, padding, padding);
@@ -50,7 +53,7 @@ public class ChangeUserTableActivity extends BaseActivity {
         LayoutInflater from = LayoutInflater.from(this);
 
         for (int i = 0; i <datas.length ; i++) {
-            final View inflate = from.inflate(R.layout.itme_filter_term, null);
+            final RelativeLayout inflate = (RelativeLayout) from.inflate(R.layout.itme_filter_term, null);
             inflate.setTag(i);
             TextView textView = (TextView) inflate.findViewById(R.id.tv);
             inflate.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +75,10 @@ public class ChangeUserTableActivity extends BaseActivity {
             textView.setText(datas[i]);
             // 把View添加到flowLayout容器中进行显示
             flowLayout.addView(inflate);
-
         }
         mFrameLayout.removeAllViews();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(70,0,70,0);//4个参数按顺序分别是左上右下
-
         flowLayout.setLayoutParams(layoutParams);
         mFrameLayout.addView(flowLayout);
     }
