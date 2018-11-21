@@ -27,7 +27,7 @@ public class HttpManager {
 
 
     /**
-     * 获取获取轮播图
+     * 获取获取轮播图 type 1为首页显示 2为纹理显示 3为商城显示
      */
     public static final String GET_SOWING = "/api/index/getsowing";
 

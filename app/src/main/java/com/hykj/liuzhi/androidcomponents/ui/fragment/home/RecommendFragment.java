@@ -13,16 +13,21 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.bean.BannerBean;
 import com.hykj.liuzhi.androidcomponents.interfaces.GlideImageLoader;
 import com.hykj.liuzhi.androidcomponents.mock.Mock;
+import com.hykj.liuzhi.androidcomponents.net.HttpManager;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailSoftArticleActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.RecommendAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.ui.widget.CustomLoadMoreView;
 import com.youth.banner.Banner;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +47,7 @@ public class RecommendFragment extends Fragment {
     Unbinder unbinder;
     RecommendAdapter mAdapter;
     ArrayList list = Mock.getRecommendList();
+    private Banner banner;
 
     @Nullable
     @Override
@@ -57,7 +63,7 @@ public class RecommendFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new RecommendAdapter(getContext(), Mock.getRecommendList());
         BannerHeader header = new BannerHeader(getContext());
-        Banner banner = header.getBanner();
+        banner = header.getBanner();
         mAdapter.addHeaderView(header);
         rv.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -74,20 +80,47 @@ public class RecommendFragment extends Fragment {
             }
         });
         mAdapter.setLoadMoreView(new CustomLoadMoreView());
+
+        initListener();
+        loadData();
+    }
+
+    private void initListener() {
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                loadData();
+//                loadData();
             }
         }, rv);
-
-        banner.setImages(Mock.getBannerList());
-        banner.setImageLoader(new GlideImageLoader())
-                .setDelayTime(5000)
-                .start();
     }
 
     private void loadData() {
+        HttpManager.post(HttpManager.GET_SOWING)
+                .params("page","1")
+                .params("number","20")
+                .params("type","1")
+                .execute(new SimpleCallBack<BannerBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(BannerBean bannerBean) {
+                        List<BannerBean.ArrayBean> list = bannerBean.getArray();
+                        ArrayList<String> picList = new ArrayList();
+                        for (int i = 0; i < list.size(); i++) {
+                            picList.add(list.get(i).getSowing_url());
+                        }
+                        banner.setImages(picList);
+                        banner.setImageLoader(new GlideImageLoader())
+                                .setDelayTime(5000)
+                                .start();
+                    }
+                });
+
+
+
         rv.postDelayed(new Runnable() {
             @Override
             public void run() {
