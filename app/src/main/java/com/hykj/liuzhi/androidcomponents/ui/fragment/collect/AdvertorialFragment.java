@@ -13,10 +13,11 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
 import com.hykj.liuzhi.androidcomponents.ui.activity.PersonDetailActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.AdvertorialAdapter;
-
-import java.util.ArrayList;
+import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,8 +26,17 @@ public class AdvertorialFragment extends Fragment {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    private ArrayList<String> list;
     private AdvertorialAdapter mAdapter;
+    private int page = 1;
+    private int number = 10;
+
+    public static AdvertorialFragment newInstance(int type) {
+        AdvertorialFragment fragment = new AdvertorialFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("type",type);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -40,12 +50,25 @@ public class AdvertorialFragment extends Fragment {
     }
 
     private void initData() {
-        list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add("最美的回忆" + i);
-        }
+        HttpHelper.getUserCollection(LocalInfoUtils.getUserId(), page, number, getArguments().getInt("type"), new HttpHelper.HttpUtilsCallBack<String>() {
+            @Override
+            public void onFailure(String failure) {
+
+            }
+
+            @Override
+            public void onSucceed(String succeed) {
+                //TODO 接口请求成功，但是数据为空，后续处理
+                Logger.t("用户收藏").i(succeed+"");
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new AdvertorialAdapter(getActivity(), list);
+        mAdapter = new AdvertorialAdapter(getActivity(), null);
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

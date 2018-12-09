@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.hykj.liuzhi.R;
-import com.hykj.liuzhi.androidcomponents.bean.BannerBean;
+import com.hykj.liuzhi.androidcomponents.bean.GetusercollectionBean;
 import com.hykj.liuzhi.androidcomponents.net.HttpManager;
 import com.hykj.liuzhi.androidcomponents.ui.activity.IssueClumnActivity;
 import com.hykj.liuzhi.androidcomponents.ui.bottomnavigation.BottomNavigationView;
@@ -13,6 +13,7 @@ import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.orhanobut.logger.Logger;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -32,21 +33,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        HttpManager.post(HttpManager.GET_SOWING)
-                .params("page","1")
-                .params("number","20")
-                .params("type","1")
-                .execute(new SimpleCallBack<BannerBean>() {
-                    @Override
-                    public void onError(ApiException e) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(BannerBean bannerBean) {
-
-                    }
-                });
+//        HttpManager.post(HttpManager.GET_SOWING)
+//                .params("page","1")
+//                .params("number","20")
+//                .params("type","1")
+//                .execute(new SimpleCallBack<GetusercollectionBean>() {
+//                    @Override
+//                    public void onError(ApiException e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(GetusercollectionBean bannerBean) {
+//                        Logger.t("MainActivity").i(bannerBean.toString());
+//                    }
+//                });
         initView();
         initListener();
     }

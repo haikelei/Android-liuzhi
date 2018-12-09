@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.hykj.liuzhi"
         minSdkVersion rootProject.minSdkVersion
@@ -33,7 +33,7 @@ android {
         exclude 'META-INF/rxjava.properties'
     }
 
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
 
     greendao {
         schemaVersion 1
@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-//    compile project(path: ':libraryNet')
+    //    compile project(path: ':libraryNet')
     compile project(path: ':libraryAdapter')
     compile project(path: ':libraryVideo')
     compile 'com.jakewharton:butterknife:8.6.0'
@@ -64,12 +64,11 @@ dependencies {
     /*switchbutton*/
     implementation 'com.github.zcweng:switch-button:0.0.3@aar'
     /*省市区*/
-    implementation 'com.contrarywind:Android-PickerView:4.1.4'    /* 滚轮时间  地址*/
+    implementation 'com.contrarywind:Android-PickerView:4.1.4'
+    /* 滚轮时间  地址*/
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.greenrobot:greendao-generator:3.2.2'
     implementation 'com.zhouyou:rxeasyhttp:2.1.2'
-
-
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.jakewharton:disklrucache:2.0.2'
@@ -78,7 +77,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.jakewharton:disklrucache:2.0.2'
@@ -87,7 +85,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
     implementation 'com.orhanobut:logger:2.2.0'
     implementation 'com.alibaba:fastjson:1.2.47'
+    // 刷新布局
+    compile 'com.liaoinstan.springview:library:1.3.0'
 }

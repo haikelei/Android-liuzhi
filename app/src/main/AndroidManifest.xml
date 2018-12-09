@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.hykj.liuzhi.androidcomponents.MainActivity">
+        <activity android:name=".androidcomponents.ui.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +27,7 @@
             android:name="com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
+        <activity android:name=".androidcomponents.MainActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.CartActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.DetailCircleImageActivity"></activity>
         <activity android:name=".androidcomponents.ui.activity.HomeSearchActivity"></activity>
@@ -43,7 +44,7 @@
         <!--消息界面-->
         <activity android:name=".androidcomponents.ui.activity.MessageActivity" />
         <!--登录界面-->
-        <activity android:name=".androidcomponents.ui.activity.LoginActivity" />
+        <!--<activity android:name=".androidcomponents.ui.activity.LoginActivity" />-->
         <!--忘记密码界面-->
         <activity android:name=".androidcomponents.ui.activity.ForgetPasswordActivity" />
         <!--动态码登录界面-->

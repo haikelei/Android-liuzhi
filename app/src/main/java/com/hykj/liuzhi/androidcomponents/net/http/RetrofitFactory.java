@@ -77,6 +77,7 @@ public class RetrofitFactory {
             String head = response.headers().toString();
             String content = response.body().string();
             Logger.t("response body:").i( content);
+
             return response.newBuilder()
                     .body(okhttp3.ResponseBody.create(mediaType, content))
                     .build();
