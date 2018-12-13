@@ -57,4 +57,22 @@ public interface HttpService {
     @FormUrlEncoded
     @POST(ApiConstant.USER_ADD_IMAGTEXT)
     Observable<String> getUseraddImagText(@FieldMap Map<String, String> map);
+    /**
+     * 首页=推荐
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Home_Firstpagedata)
+    Observable<String> getFirstpagedata(@FieldMap Map<String, String> map);
+    /**
+     * 首页=纹理
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Home_Firstpagedatatexture)
+    Observable<String> getFirstpagedatatexture(@FieldMap Map<String, String> map);
+    /**
+     * 首页=潮流
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Home_Firstpagedatatrend)
+    Observable<String> getFirstpagedatatrend(@FieldMap Map<String, String> map);
 }

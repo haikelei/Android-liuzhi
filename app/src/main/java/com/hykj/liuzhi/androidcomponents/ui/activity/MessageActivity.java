@@ -17,19 +17,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * 消息页
  * @author: lujialei
  * @date: 2018/10/9
  * @describe:
  */
-
-
 public class MessageActivity extends BaseActivity {
-
     @BindView(R.id.tab_layout)
     SlidingTabLayout tabLayout;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +35,6 @@ public class MessageActivity extends BaseActivity {
         viewPager.setAdapter(new MessagePagerAdapter(getSupportFragmentManager()));
         tabLayout.setViewPager(viewPager);
     }
-
     @Override
     protected View onCreateTopBar(ViewGroup view) {
         MessageTopBar defaultTopBar = new MessageTopBar(this, "消息", true);

@@ -18,8 +18,6 @@ import butterknife.ButterKnife;
  * @date: 2018/10/22
  * @describe:
  */
-
-
 public class HistorySearchLayout extends RelativeLayout {
     @BindView(R.id.afl_cotent)
     AutoFlowLayout aflCotent;
@@ -37,7 +35,6 @@ public class HistorySearchLayout extends RelativeLayout {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
-
     private void initView(Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_history_search_layout, this, true);
         ButterKnife.bind(this);

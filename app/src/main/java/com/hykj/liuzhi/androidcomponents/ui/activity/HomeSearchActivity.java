@@ -12,16 +12,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ * 搜索页面
  * @author: lujialei
  * @date: 2018/10/22
  * @describe:
  */
-
-
 public class HomeSearchActivity extends BaseActivity {
     @BindView(R.id.tv_homesearch_cancel)
     TextView tvHomesearchCancel;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

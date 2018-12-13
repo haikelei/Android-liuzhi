@@ -15,6 +15,7 @@
         <ImageView
             android:scaleType="centerCrop"
             android:id="@+id/iv_center"
+            android:src="@mipmap/test1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <LinearLayout
@@ -24,7 +25,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ImageView
                 android:id="@+id/iv_icon"
                 android:layout_width="20dp"

@@ -6,7 +6,9 @@ import android.text.TextUtils;
 
 import com.hykj.liuzhi.androidcomponents.MyApplication;
 import com.hykj.liuzhi.androidcomponents.bean.LoginEntity;
+import com.hykj.liuzhi.androidcomponents.bean.User;
 import com.hykj.liuzhi.androidcomponents.bean.UserInfo;
+import com.orhanobut.logger.Logger;
 
 public class LocalInfoUtils {
 
@@ -68,6 +70,7 @@ public class LocalInfoUtils {
         return userid;
     }
 
+
     public static void saveUserself(String user_data){
         Context context = MyApplication.getAppContext();
         if (context != null) {
@@ -87,6 +90,4 @@ public class LocalInfoUtils {
         }
         return str;
     }
-
-
 }

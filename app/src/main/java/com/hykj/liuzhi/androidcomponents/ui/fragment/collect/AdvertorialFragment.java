@@ -50,34 +50,34 @@ public class AdvertorialFragment extends Fragment {
     }
 
     private void initData() {
-        HttpHelper.getUserCollection(LocalInfoUtils.getUserId(), page, number, getArguments().getInt("type"), new HttpHelper.HttpUtilsCallBack<String>() {
-            @Override
-            public void onFailure(String failure) {
-
-            }
-
-            @Override
-            public void onSucceed(String succeed) {
-                //TODO 接口请求成功，但是数据为空，后续处理
-                Logger.t("用户收藏").i(succeed+"");
-            }
-
-            @Override
-            public void onError(String error) {
-
-            }
-        });
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new AdvertorialAdapter(getActivity(), null);
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(getContext(), PersonDetailActivity.class);
-                startActivity(intent);
-            }
-        });
-//        mAdapter.setEmptyView(initEmptyView());
-        recyclerView.setAdapter(mAdapter);
+//        HttpHelper.getUserCollection(LocalInfoUtils.getUserId(), page, number, getArguments().getInt("type"), new HttpHelper.HttpUtilsCallBack<String>() {
+//            @Override
+//            public void onFailure(String failure) {
+//
+//            }
+//
+//            @Override
+//            public void onSucceed(String succeed) {
+//                //TODO 接口请求成功，但是数据为空，后续处理
+//                Logger.t("用户收藏").i(succeed+"");
+//            }
+//
+//            @Override
+//            public void onError(String error) {
+//
+//            }
+//        });
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        mAdapter = new AdvertorialAdapter(getActivity(), null);
+//        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                Intent intent = new Intent(getContext(), PersonDetailActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+////        mAdapter.setEmptyView(initEmptyView());
+//        recyclerView.setAdapter(mAdapter);
     }
 
     private void initView() {

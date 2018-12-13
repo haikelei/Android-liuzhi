@@ -1,9 +1,11 @@
 package com.hykj.liuzhi.androidcomponents.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
 import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,7 +57,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initView() {
-        new TitleBuilder(LoginActivity.this).setTitleText ("登录").setLeftIco (R.mipmap.common_black_back).setLeftIcoListening (new View.OnClickListener () {
+        new TitleBuilder (LoginActivity.this).setTitleText ("登录").setLeftIco (R.mipmap.common_black_back).setLeftIcoListening (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
                 finish ();
@@ -79,7 +82,9 @@ public class LoginActivity extends BaseActivity {
                 startActivity (intent);
                 break;
             case R.id.tv_login_login:
-                UserLogin ();
+                startActivity (new Intent (LoginActivity.this, MainActivity.class));
+
+//                UserLogin ();
                 break;
         }
 
@@ -106,7 +111,7 @@ public class LoginActivity extends BaseActivity {
                         UserInfo userInfo = LocalInfoUtils.getUserInfo ();
                         LocalInfoUtils.saveUserInfo (mLoginPhone, userInfo.getCode (), mLoginPass);
                         LocalInfoUtils.saveUserdata (succeed);
-                        getUserself(LocalInfoUtils.getUserId());
+                        getUserself(entity.getUserdata().getUser_id());
 
                     }
                 }
@@ -122,8 +127,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     //获取用户数据
-    public void getUserself(int userId) {
-        HttpHelper.getUserself (userId,new HttpHelper.HttpUtilsCallBack<String> () {
+    public void getUserself(int user_id) {
+        HttpHelper.getUserself (user_id,new HttpHelper.HttpUtilsCallBack<String> () {
             @Override
             public void onFailure(String failure) {
                 Toast.makeText (LoginActivity.this, failure, Toast.LENGTH_SHORT).show ();
@@ -131,14 +136,12 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onSucceed(String succeed) {
-                LocalInfoUtils.saveUserself (succeed);
-
+                LocalInfoUtils.saveUserself(succeed);
             }
 
             @Override
             public void onError(String error) {
                 Toast.makeText (LoginActivity.this, ErrorStateCodeUtils.getRegisterErrorMessage (error), Toast.LENGTH_SHORT).show ();
-
             }
         });
     }

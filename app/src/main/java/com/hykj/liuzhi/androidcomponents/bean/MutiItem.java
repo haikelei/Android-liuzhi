@@ -10,7 +10,6 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 
 public class MutiItem implements MultiItemEntity {
-
     public static final int IMAGE_TEXT_INSIDE = 1; //图在底文字里面
     public static final int SECTION_HEADER = 2;//分区标题
     public static final int IMAGE_TEXT_TOP = 3;
@@ -27,4 +26,5 @@ public class MutiItem implements MultiItemEntity {
     public int getItemType() {
         return type;
     }
+
 }

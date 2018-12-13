@@ -16,4 +16,10 @@ public class ApiConstant {
     public static final String USER_COLLECTION_LIST = "/api/index/usercollection";
     //用户上传图文信息
     public static final String USER_ADD_IMAGTEXT = "/api/index/addimagetext";
+    //首页=推荐
+    public static final String Home_Firstpagedata = "/api/index/firstpagedata";
+    //首页=纹理
+    public static final String Home_Firstpagedatatexture = "/api/index/firstpagedatatexture";
+    //首页=潮流
+    public static final String Home_Firstpagedatatrend = "/api/index/firstpagedatatrend";
 }

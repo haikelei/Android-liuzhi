@@ -69,9 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="31dp"
             android:text="忘记密码"
-
             android:textSize="14sp" />
-
         <TextView
             android:id="@+id/tv_login_dongcode2login"
             android:layout_width="wrap_content"

@@ -33,15 +33,11 @@ public class AttentionAdapter extends BaseQuickAdapter<UserAttentionBean.DataBea
     }
 
     @Override
-    protected void convert(final BaseViewHolder helper, UserAttentionBean.DataBean.ArrayBean item) {
+    protected void convert(final BaseViewHolder helper, final UserAttentionBean.DataBean.ArrayBean item) {
         TextView tvAttentionName = helper.getView(R.id.tv_attention_name);
         TextView tvAttentionMsg = helper.getView(R.id.tv_attention_msg);
         ImageView ivAttentionIma = helper.getView(R.id.iv_attention_ima);
-        if (null==item.getUserdata().getUser_pic()) {
-            new GlideImageLoader().displayImage(mContext, R.mipmap.app_logo, ivAttentionIma);
-        } else {
-            new GlideImageLoader().displayImage(mContext, item.getUserdata().getUser_pic(), ivAttentionIma);
-        }
+        new GlideImageLoader().displayImage(mContext, item.getUserdata().getUser_pic(), ivAttentionIma);
         tvAttentionName.setText(item.getUserdata().getUser_nickname());
         tvAttentionMsg.setText(item.getUserdata().getUser_autograph());
         final TextView textView = helper.getView(R.id.textView);
@@ -74,14 +70,12 @@ public class AttentionAdapter extends BaseQuickAdapter<UserAttentionBean.DataBea
                     textView.setBackground(mContext.getDrawable(R.drawable.bg_button_ffb400_2dp));
                     textView.setTextColor(mContext.getResources().getColor(R.color.white));
                     textView.setText("关注");
-                    int userCollid = list.get(helper.getLayoutPosition()).getUser_collid();
-                    setClick(userCollid);
+                    setClick(item.getUser_collid());
                 } else {
                     textView.setBackground(mContext.getDrawable(R.drawable.bg_button_el_2dp));
                     textView.setTextColor(mContext.getResources().getColor(R.color.public_aaaaaa));
                     textView.setText("已关注");
-                    int userCollid = list.get(helper.getLayoutPosition()).getUser_collid();
-                    setClick(userCollid);
+                    setClick(item.getUser_collid());
                 }
                 textView.setTag(tag);
             }
@@ -89,6 +83,7 @@ public class AttentionAdapter extends BaseQuickAdapter<UserAttentionBean.DataBea
     }
 
     private void setClick(int clickId) {
+
         HttpHelper.getUserClickAttention(clickId, LocalInfoUtils.getUserId(), new HttpHelper.HttpUtilsCallBack<String>() {
             @Override
             public void onFailure(String failure) {

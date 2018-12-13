@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,14 @@ public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         titleList.add("潮流");
         titleList.add("玩品");
     }
-
+//    @Override
+//    public void onDestroyView() {
+//        LogUtils.d(TAG, "-->onDestroyView");
+//        super.onDestroyView();
+//        if (null != FragmentView) {
+//            ((ViewGroup) mFragmentView.getParent()).removeView(mFragmentView);
+//        }
+//    }
     @Override
     public Fragment getItem(int position) {
         return list.get(position);
@@ -52,4 +60,7 @@ public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return titleList.get(position);
     }
+
+
+
 }

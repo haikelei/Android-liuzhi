@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.ui.adapter.AttentionAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.AddFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.CircleFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.HomeFragment;

@@ -31,7 +31,6 @@ import butterknife.Unbinder;
 
 
 public class HomeFragment extends Fragment {
-
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     Unbinder unbinder;
