@@ -14,7 +14,7 @@
         android:background="#f5f5f5">
 
         <com.hykj.liuzhi.androidcomponents.utils.RoundImageView
-            android:id="@+id/iv_edituser_head"
+            android:id="@+id/iv_edituser_head1"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_edituser_head"
+            android:layout_below="@+id/iv_edituser_head1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:text="更换头像"
@@ -57,14 +57,12 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="姓名" />
-
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="12dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@mipmap/next_grey" />
-
             </RelativeLayout>
 
             <View
@@ -178,8 +176,19 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="邮箱" />
-
+                <TextView
+                    android:id="@+id/tv_edit_userdata_mail"
+                    android:layout_toLeftOf="@+id/tv_edit_userdata_rigt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:text="90后月光族"
+                    android:textSize="15sp" />
                 <ImageView
+                    android:id="@+id/tv_edit_userdata_rigt"
                     android:layout_width="10dp"
                     android:layout_height="12dp"
                     android:layout_alignParentRight="true"
@@ -207,12 +216,14 @@
                     android:text="签名" />
 
                 <TextView
+                    android:id="@+id/tv_edit_userdata_autograph"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="5dp"
                     android:layout_toLeftOf="@+id/iv_sign_rightrow"
                     android:background="@null"
+                    android:gravity="right"
                     android:hint="无志之人常立志,有志之人立长志"
                     android:textSize="14sp" />
 

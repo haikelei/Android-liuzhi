@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="211dp"
@@ -44,6 +43,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/mineTvCollection"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="56"
@@ -66,6 +66,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/mineTvmyfocus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="288"
@@ -87,6 +88,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/mineTvmyfans"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -148,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_mineuser_nike"
                 android:layout_centerVertical="true"
-                android:text="ID:344677"
+                android:text="ID:"
                 android:textColor="#aaaaaa"
                 android:textSize="16sp" />
 

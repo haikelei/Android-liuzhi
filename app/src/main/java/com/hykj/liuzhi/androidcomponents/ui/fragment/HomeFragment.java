@@ -9,14 +9,21 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.bean.SignInBean;
+import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
 import com.hykj.liuzhi.androidcomponents.ui.activity.HomeSearchActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.LoginActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MessageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.HomeFragmentPagerAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.VideoContextBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.SignDialog;
+import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
+import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,10 +52,12 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    SignDialog dialog;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewPager.setAdapter(new HomeFragmentPagerAdapter(getFragmentManager()));
+        viewPager.setAdapter(new HomeFragmentPagerAdapter(getChildFragmentManager()));
         tabLayout.setViewPager(viewPager);
     }
 
@@ -63,9 +72,7 @@ public class HomeFragment extends Fragment {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.iv_sign:
-                SignDialog dialog = new SignDialog(getContext());
-                dialog.setCancelable(true);
-                dialog.show();
+                postSignIn();
                 break;
             case R.id.rl_search:
                 intent = new Intent(getContext(), HomeSearchActivity.class);
@@ -76,5 +83,38 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
                 break;
         }
+    }
+
+    /**
+     * 签到
+     */
+    SignInBean entity;
+    public void postSignIn() {
+        HttpHelper.getSignIn(new HttpHelper.HttpUtilsCallBack<String>() {
+            @Override
+            public void onFailure(String failure) {
+                Toast.makeText(getContext(), failure, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSucceed(String succeed) {
+//                entity = FastJSONHelper.getPerson(succeed, SignInBean.class);
+//                您已连续签到3天,再接再厉哦
+                dialog = new SignDialog(getContext(),entity.getMsg());
+                dialog.setCancelable(true);
+                dialog.show();
+            }
+            @Override
+            public void onError(String error) {
+                if (error.equals("1")) {
+                    Toast.makeText(getContext(), "未登录", Toast.LENGTH_SHORT).show();
+                } else if (error.equals("2")) {
+                    Toast.makeText(getContext(), "已签到", Toast.LENGTH_SHORT).show();
+                } else if (error.equals("3")) {
+                    Toast.makeText(getContext(), "签到失败", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 }

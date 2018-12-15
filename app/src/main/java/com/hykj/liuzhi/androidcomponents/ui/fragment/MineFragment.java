@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.flyco.tablayout.SlidingTabLayout;
+import com.google.gson.Gson;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.bean.UserData;
 import com.hykj.liuzhi.androidcomponents.ui.activity.AttentionActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.MyCollectActivity;
@@ -24,6 +28,7 @@ import com.hykj.liuzhi.androidcomponents.ui.activity.MyJiFenActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.OffLineVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.SetUpActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.MinePagerAdapter;
+import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
 import com.hykj.liuzhi.androidcomponents.utils.RoundImageView;
 
 import butterknife.BindView;
@@ -66,6 +71,13 @@ public class MineFragment extends Fragment {
     SlidingTabLayout tabLayoutMine;
     @BindView(R.id.view_pager_mine)
     ViewPager viewPagerMine;
+    @BindView(R.id.mineTvCollection)
+    TextView tvConllection;
+    @BindView(R.id.mineTvmyfocus)
+    TextView tvMyFocus;
+    @BindView(R.id.mineTvmyfans)
+    TextView tvMyFans;
+    Gson gson = new Gson();
 
     @Nullable
     @Override
@@ -86,15 +98,11 @@ public class MineFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        seetingUser();
     }
-
     private void initView() {
         restoreInfo();
-
-
     }
-
     /*获取保存的信息*/
     private void restoreInfo() {
         SharedPreferences sp = getActivity().getSharedPreferences("data", 0);
@@ -102,8 +110,6 @@ public class MineFragment extends Fragment {
         if (!userPhone.isEmpty()) {
             tvMineuserNike.setText(userPhone);
         }
-
-
     }
 
     @Override
@@ -151,5 +157,15 @@ public class MineFragment extends Fragment {
                 break;
         }
         startActivity(intent);
+    }
+
+    public void seetingUser() {
+        Glide.with(getContext()).load(LocalInfoUtils.getUserself("user_pic")).into(ivMineUserhead);
+        tvMineuserNike.setText(LocalInfoUtils.getUserself("user_nickname"));
+        tvMineuserId.setText("ID:" + LocalInfoUtils.getUserself("user_id"));
+        tvConllection.setText(LocalInfoUtils.getUserself("user_collection"));
+        tvMyFocus.setText(LocalInfoUtils.getUserself("user_follow"));
+        tvMyFans.setText(LocalInfoUtils.getUserself("user_fans"));
+        tvMineSead.setText(LocalInfoUtils.getUserself("user_integral"));
     }
 }

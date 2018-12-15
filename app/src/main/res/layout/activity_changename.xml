@@ -45,16 +45,33 @@
             android:layout_alignParentBottom="true" />
     </RelativeLayout>
 
-    <EditText
-
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/white"
-        android:drawableEnd="@mipmap/clear_text"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:text="啦啦啦"
-        android:textSize="14sp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="啦啦啦"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/shutdonw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_15"
+            android:paddingBottom="@dimen/dp_10"
+            android:src="@mipmap/clear_text" />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"

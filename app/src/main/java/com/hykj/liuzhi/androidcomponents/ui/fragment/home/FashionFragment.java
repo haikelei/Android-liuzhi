@@ -21,6 +21,7 @@ import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.RecommendAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.adapter.FashionAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.home.base.ViewPagerFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.FashionBase;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.FashionBean;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.FirstpagedataBean;
@@ -44,29 +45,26 @@ import butterknife.Unbinder;
  * @date: 2018/9/27
  * @describe:
  */
-public class FashionFragment extends Fragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class FashionFragment extends ViewPagerFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.RequestLoadMoreListener {
     @BindView(R.id.rv)
     RecyclerView rv;
     Unbinder unbinder;
     FashionAdapter mAdapter;
-    boolean Fashion = false;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_fashion, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        if (Fashion) {
-            mAdapter = null;
-            Fashion = false;
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_home_fashion, container, false);
+            unbinder = ButterKnife.bind(this, rootView);
+            initView();
         }
-        return view;
+        return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initView();
     }
 
     private void initView() {
@@ -79,8 +77,9 @@ public class FashionFragment extends Fragment implements BaseQuickAdapter.OnItem
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
-        Fashion = true;
+        if (rootView == null) {
+            unbinder.unbind();
+        }
     }
 
     FashionBean entity;
@@ -164,5 +163,15 @@ public class FashionFragment extends Fragment implements BaseQuickAdapter.OnItem
                 backData(page);
             }
         }, 2000);
+    }
+
+    @Override
+    protected void onFragmentVisibleChange(boolean isVisible) {
+        super.onFragmentVisibleChange(isVisible);
+        if (isVisible) {
+
+        } else {
+
+        }
     }
 }

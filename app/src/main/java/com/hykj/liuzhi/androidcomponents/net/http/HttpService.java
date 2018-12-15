@@ -57,22 +57,66 @@ public interface HttpService {
     @FormUrlEncoded
     @POST(ApiConstant.USER_ADD_IMAGTEXT)
     Observable<String> getUseraddImagText(@FieldMap Map<String, String> map);
+
     /**
      * 首页=推荐
      */
     @FormUrlEncoded
     @POST(ApiConstant.Home_Firstpagedata)
     Observable<String> getFirstpagedata(@FieldMap Map<String, String> map);
+
     /**
      * 首页=纹理
      */
     @FormUrlEncoded
     @POST(ApiConstant.Home_Firstpagedatatexture)
     Observable<String> getFirstpagedatatexture(@FieldMap Map<String, String> map);
+
     /**
      * 首页=潮流
      */
     @FormUrlEncoded
     @POST(ApiConstant.Home_Firstpagedatatrend)
     Observable<String> getFirstpagedatatrend(@FieldMap Map<String, String> map);
+
+    /**
+     * 首页=搜索历史
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Home_Userselecthistory)
+    Observable<String> getUserselecthistory(@FieldMap Map<String, String> map);
+
+    /**
+     * 首页=搜索
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Home_Userselect)
+    Observable<String> getUserselect(@FieldMap Map<String, String> map);
+
+    /**
+     * 首页=签到
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Home_SignIn)
+    Observable<String> getSignIn(@FieldMap Map<String, String> map);
+
+    /**
+     * 首页=签名
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Min_Changeautograph)
+    Observable<String> getChangeautograph(@FieldMap Map<String, String> map);
+
+    /**
+     * 首页=昵称
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Min_Changenickname)
+    Observable<String> getChangenickname(@FieldMap Map<String, String> map);
+    /**
+     * 首页=昵称
+     */
+    @FormUrlEncoded
+    @POST(ApiConstant.Min_ChangEmail)
+    Observable<String> getChangEmail(@FieldMap Map<String, String> map);
 }

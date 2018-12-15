@@ -20,6 +20,7 @@ import com.hykj.liuzhi.androidcomponents.mock.Mock;
 import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.adapter.TextureAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.home.base.ViewPagerFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.TextureBase;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.TextureFragBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
@@ -42,29 +43,27 @@ import butterknife.Unbinder;
  * @date: 2018/9/27
  * @describe:
  */
-public class TextureFragment extends Fragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class TextureFragment extends ViewPagerFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.RequestLoadMoreListener {
     @BindView(R.id.rv)
     RecyclerView rv;
     Unbinder unbinder;
     TextureAdapter mAdapter;
-    boolean Texture=false;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_texture, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        if(Texture){
-            mAdapter=null;
-            Texture=false;
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_home_texture, container, false);
+            unbinder = ButterKnife.bind(this, rootView);
+            initView();
+            backData(page);//获取数据
         }
-        return view;
+        return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initView();
-        backData(page);//获取数据
     }
 
     int page = 1;
@@ -92,8 +91,9 @@ public class TextureFragment extends Fragment implements BaseQuickAdapter.OnItem
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Texture=true;
-        unbinder.unbind();
+        if (rootView == null) {
+            unbinder.unbind();
+        }
     }
 
     TextureFragBean entity;
@@ -166,14 +166,14 @@ public class TextureFragment extends Fragment implements BaseQuickAdapter.OnItem
             }
         }
         if (mAdapter == null) {
-            mAdapter= new TextureAdapter(getContext(), datas);
+            mAdapter = new TextureAdapter(getContext(), datas);
             rv.setAdapter(mAdapter);
             mAdapter.addHeaderView(header);
             mAdapter.setOnItemClickListener(this);
             mAdapter.setLoadMoreView(new CustomLoadMoreView());
             mAdapter.setOnLoadMoreListener(this, rv);
         } else {
-            mAdapter .notifyLoadMoreToLoading();
+            mAdapter.notifyLoadMoreToLoading();
             mAdapter.loadMoreComplete();
         }
     }
@@ -187,5 +187,15 @@ public class TextureFragment extends Fragment implements BaseQuickAdapter.OnItem
     @Override
     public void onLoadMoreRequested() {
         loadData();
+    }
+
+    @Override
+    protected void onFragmentVisibleChange(boolean isVisible) {
+        super.onFragmentVisibleChange(isVisible);
+        if (isVisible) {
+
+        } else {
+
+        }
     }
 }

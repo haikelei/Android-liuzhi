@@ -19,6 +19,7 @@ import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailSoftArticleActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.adapter.FirstpageAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.home.base.ViewPagerFragment;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.FirstpagedataBean;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.SoftLanguageBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
@@ -41,7 +42,7 @@ import butterknife.Unbinder;
  */
 
 
-public class RecommendFragment extends Fragment implements BaseQuickAdapter.OnItemClickListener {
+public class RecommendFragment extends ViewPagerFragment implements BaseQuickAdapter.OnItemClickListener {
     @BindView(R.id.rv)
     RecyclerView rv;
     Unbinder unbinder;
@@ -49,18 +50,17 @@ public class RecommendFragment extends Fragment implements BaseQuickAdapter.OnIt
     FirstpageAdapter mAdapter;
     List<SoftLanguageBean> data = new ArrayList<>();
     private Banner banner;
-    boolean newFragMent = false;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_recommend, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        if (newFragMent) {
-            mAdapter = null;
-            newFragMent = false;
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_home_recommend, container, false);
+            unbinder = ButterKnife.bind(this, rootView);
+            initListener();
+            postBackData();
         }
-        return view;
+        return rootView;
     }
 
     BannerHeader header;
@@ -68,15 +68,14 @@ public class RecommendFragment extends Fragment implements BaseQuickAdapter.OnIt
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
         header = new BannerHeader(getContext());
         banner = header.getBanner();
 //        mAdapter.setLoadMoreView(new CustomLoadMoreView());
-        initListener();
-        postBackData();
+
     }
 
     private void initListener() {
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
 //        mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
 //            @Override
 //            public void onLoadMoreRequested() {
@@ -98,9 +97,11 @@ public class RecommendFragment extends Fragment implements BaseQuickAdapter.OnIt
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
-        newFragMent = true;
+        if (rootView == null) {
+            unbinder.unbind();
+        }
     }
+
     FirstpagedataBean entity;
 
     public void postBackData() {
@@ -194,6 +195,16 @@ public class RecommendFragment extends Fragment implements BaseQuickAdapter.OnIt
             Intent intent = new Intent(getContext(), DetailSoftArticleActivity.class);
             startActivity(intent);
         } else {//广告
+
+        }
+    }
+
+    @Override
+    protected void onFragmentVisibleChange(boolean isVisible) {
+        super.onFragmentVisibleChange(isVisible);
+        if (isVisible) {
+
+        } else {
 
         }
     }

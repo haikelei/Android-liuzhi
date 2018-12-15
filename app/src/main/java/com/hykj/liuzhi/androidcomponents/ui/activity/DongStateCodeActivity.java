@@ -62,7 +62,7 @@ public class DongStateCodeActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.tv_dongtailogin_login,R.id.tv_dongtailogin_pass2login,R.id.tv_dongtailogin_forgetpassword, R.id.tv_dongtailogin_toregist})
+    @OnClick({R.id.tv_dongtailogin_login, R.id.tv_dongtailogin_pass2login, R.id.tv_dongtailogin_forgetpassword, R.id.tv_dongtailogin_toregist})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_dongtailogin_login:
@@ -97,8 +97,8 @@ public class DongStateCodeActivity extends BaseActivity {
                     LoginEntity entity = FastJSONHelper.getPerson(succeed, LoginEntity.class);
                     if (entity != null) {
                         UserInfo userInfo = LocalInfoUtils.getUserInfo();
-                        LocalInfoUtils.saveUserInfo(mLoginPhone, mLoginCode,userInfo.getPassword());
-                        startActivity(new Intent(DongStateCodeActivity.this,MainActivity.class));
+                        LocalInfoUtils.saveUserInfo(mLoginPhone, mLoginCode, userInfo.getPassword());
+                        getUserself(entity.getUserdata().getUser_id());
                     }
                 }
 
@@ -108,7 +108,25 @@ public class DongStateCodeActivity extends BaseActivity {
                 }
             });
         }
+    }
 
+    //获取用户数据
+    public void getUserself(int user_id) {
+        HttpHelper.getUserself(user_id, new HttpHelper.HttpUtilsCallBack<String>() {
+            @Override
+            public void onFailure(String failure) {
+                Toast.makeText(DongStateCodeActivity.this, failure, Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onSucceed(String succeed) {
+                LocalInfoUtils.saveUserself(succeed);
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(DongStateCodeActivity.this, ErrorStateCodeUtils.getRegisterErrorMessage(error), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
