@@ -7,14 +7,15 @@
     <include layout="@layout/activity_title" />
 
     <ImageView
+        android:id="@+id/issue_hader"
         android:layout_width="match_parent"
         android:layout_height="125dp"
+        android:scaleType="fitXY"
         android:background="@mipmap/icon_person_detail_bg3" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,20 +23,23 @@
             android:orientation="vertical">
 
             <RelativeLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true">
 
                 <EditText
+                    android:id="@+id/issue_imagetexttext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="15dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
                     android:background="@null"
+                    android:gravity="left"
                     android:hint="添加说明..."
+                    android:inputType="textMultiLine"
+                    android:minLines="6"
                     android:textSize="15sp" />
             </RelativeLayout>
 
@@ -48,18 +52,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="6dp">
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="15dp">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-
                     android:text="添加标签"
                     android:textColor="@color/mineTextCommonColor"
                     android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/issue_imagetextlabelid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dip_70"
+                    android:layout_marginRight="@dimen/dip_20"
+                    android:background="@null"
+                    android:gravity="right" />
 
                 <ImageView
                     android:layout_width="10dp"
@@ -92,12 +103,12 @@
                 android:overScrollMode="never" />
 
             <TextView
-                android:id="@+id/tv_login_login"
+                android:id="@+id/issue_submit"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
                 android:background="#ffea00"
                 android:gravity="center"
                 android:text="立即发布"

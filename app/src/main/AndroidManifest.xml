@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.hykj.liuzhi.androidcomponents.MyApplication"
@@ -89,7 +89,7 @@
         <activity android:name=".androidcomponents.ui.activity.ChangeUserTableActivity" />
         <!--其他用户详情界面-->
         <activity android:name=".androidcomponents.ui.activity.PersonDetailActivity" />
-
+        <activity android:name="com.hykj.liuzhi.androidcomponents.ui.fragment.shop.ShopSearchActivity"/>
 
     </application>
 

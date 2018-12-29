@@ -7,21 +7,39 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.bean.CircleBean;
+import com.hykj.liuzhi.androidcomponents.bean.CircleBean1;
 import com.hykj.liuzhi.androidcomponents.interfaces.GlideImageLoader;
+import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
 import com.hykj.liuzhi.androidcomponents.ui.activity.DetailCircleImageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.CircleAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.adapter.CircleAdapter1;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.circle.bean.CircleFragmentBean;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.FashionBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.ui.widget.HeaderCircleScroll;
+import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
+import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,11 +52,12 @@ import butterknife.Unbinder;
  */
 
 
-public class CircleFragment extends Fragment {
-
+public class CircleFragment extends Fragment implements BaseQuickAdapter.OnItemChildClickListener {
     @BindView(R.id.rv)
     RecyclerView rv;
     Unbinder unbinder;
+    @BindView(R.id.circle_refreshLayout)
+    SmartRefreshLayout refreshLayout;
 
     @Nullable
     @Override
@@ -54,43 +73,212 @@ public class CircleFragment extends Fragment {
         initView();
     }
 
+    int page = 1;
+    ArrayList<CircleBean1> datas = new ArrayList();
+    private CircleAdapter1 adapter;
+    List<String> pics = new ArrayList();
+    BannerHeader bannerHeader;
+    private Banner banner;
+
     private void initView() {
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        ArrayList<CircleBean> list = new ArrayList();
-        list.add(new CircleBean(1));
-        list.add(new CircleBean(2));
-        list.add(new CircleBean(3));
-        list.add(new CircleBean(1));
-        list.add(new CircleBean(2));
-        list.add(new CircleBean(3));
-        CircleAdapter adapter = new CircleAdapter(list);
-        BannerHeader bannerHeader = new BannerHeader(getContext());
-        Banner banner = bannerHeader.getBanner();
-        ArrayList pics = new ArrayList();
-        pics.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539880326826&di=4ceae40946ae8a57afb7fc43bcd9f661&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Ff603918fa0ec08faf4f358d454ee3d6d54fbdad6.jpg");
-        banner.setImages(pics);
-        banner.setImageLoader(new GlideImageLoader())
-                .setDelayTime(5000)
-                .start();
-        adapter.addHeaderView(bannerHeader);
-        adapter.addHeaderView(new HeaderCircleScroll(getContext()));
-
-
-        rv.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        refreshLayout.setRefreshHeader(new ClassicsHeader(getContext()));  //设置 Header 为 贝塞尔雷达 样式
+        refreshLayout.setRefreshFooter(new ClassicsFooter(getContext()).setSpinnerStyle(SpinnerStyle.Scale));//设置 Footer 为 球脉冲 样式
+        refreshLayout.setEnableRefresh(true);//启用刷新
+        refreshLayout.setEnableLoadmore(true);//启用加载
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(getContext(), DetailCircleImageActivity.class);
-                startActivity(intent);
+            public void onRefresh(RefreshLayout refreshlayout) {
+                page = 1;
+                datas.clear();
+                backData();
+                refreshlayout.finishRefresh();
             }
         });
-
+        //加载更多
+        refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                page++;
+                backData();
+                refreshlayout.finishLoadmore();
+            }
+        });
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        backData();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    public void backData() {
+        HttpHelper.imagetextfirstpage(page + "", new HttpHelper.HttpUtilsCallBack<String>() {
+            @Override
+            public void onFailure(String failure) {
+                Toast.makeText(getContext(), failure, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSucceed(String succeed) {
+                CircleFragmentBean entity = FastJSONHelper.getPerson(succeed, CircleFragmentBean.class);
+                if (entity.getCode() != 0) {
+                    return;
+                }
+                setAdatper(entity);
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(getContext(), ErrorStateCodeUtils.getRegisterErrorMessage(error), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    CircleBean1 bean1;
+
+    public void setAdatper(CircleFragmentBean entity) {
+        pics.clear();
+        Random random = new Random();
+        for (int i = 0; i < entity.getData().getArray().size(); i++) {
+            List<CircleBean1.ArrayBean> usedata = new ArrayList<>();
+            int yushu = entity.getData().getArray().size() % 3;
+            int type = entity.getData().getArray().size() - 2;
+            int type1 = entity.getData().getArray().size() - 1;
+            Log.e("aa","------yushu-------"+yushu);
+            int size = 0;
+            switch (yushu) {
+                case 0:
+                    size = 3;
+                    break;
+                case 2:
+                    if (i > type) {
+                        size = 2;
+                    } else {
+                        size = 3;
+                    }
+                    break;
+                case 1:
+                    if (i > type1) {
+                        size = 1;
+                    } else {
+                        size = 3;
+                    }
+                    break;
+            }
+            Log.e("aa",type1+"------size-------");
+            for (int j = 0; j < size; j++) {
+                int zhi;
+                if (i <= 3) {
+                    zhi = (i + j);
+                } else {
+                    zhi = (i + j - 1);
+                }
+                CircleBean1.ArrayBean bean = new CircleBean1.ArrayBean();
+                bean.setImagetext_id(Integer.valueOf(entity.getData().getArray().get(zhi).getImagetext_id()));
+                if (entity.getData().getArray().get(zhi).getImagetextimagedata() != null) {
+                    bean.setImagetextimage_url(entity.getData().getArray().get(zhi).getImagetextimagedata().getImagetextimage_url());
+                } else {
+                    bean.setImagetextimage_url("");
+                }
+                usedata.add(bean);
+            }
+            if (i <= 3) {
+                i = i + size;
+            } else {
+                i = i + (size - 1);
+            }
+//            if (i < entity.getData().getArray().size()) {
+//                CircleBean1.ArrayBean bean = new CircleBean1.ArrayBean();
+//                bean.setImagetext_id(Integer.valueOf(entity.getData().getArray().get(i).getImagetext_id()));
+//                if (entity.getData().getArray().get(i).getImagetextimagedata() != null) {
+//                    bean.setImagetextimage_url(entity.getData().getArray().get(i).getImagetextimagedata().getImagetextimage_url());
+//                } else {
+//                    bean.setImagetextimage_url("");
+//                }
+//                usedata.add(bean);
+//                i += 1;
+//            }
+//            if (i < entity.getData().getArray().size()) {
+//                CircleBean1.ArrayBean bean = new CircleBean1.ArrayBean();
+//                bean.setImagetext_id(Integer.valueOf(entity.getData().getArray().get(i).getImagetext_id()));
+//                if (entity.getData().getArray().get(i).getImagetextimagedata() != null) {
+//                    bean.setImagetextimage_url(entity.getData().getArray().get(i).getImagetextimagedata().getImagetextimage_url());
+//                } else {
+//                    bean.setImagetextimage_url("");
+//                }
+//                usedata.add(bean);
+//                i += 1;
+//            }
+//            if (i < entity.getData().getArray().size()) {
+//                CircleBean1.ArrayBean bean = new CircleBean1.ArrayBean();
+//                bean.setImagetext_id(Integer.valueOf(entity.getData().getArray().get(i).getImagetext_id()));
+//                if (entity.getData().getArray().get(i).getImagetextimagedata() != null) {
+//                    bean.setImagetextimage_url(entity.getData().getArray().get(i).getImagetextimagedata().getImagetextimage_url());
+//                } else {
+//                    bean.setImagetextimage_url("");
+//                }
+//                usedata.add(bean);
+//            }
+            switch (random.nextInt(3)) {
+                case 0:
+                    bean1 = new CircleBean1(CircleBean1.THREE_SMALL, usedata);
+                    break;
+                case 1:
+                    bean1 = new CircleBean1(CircleBean1.RIGHT_BIG, usedata);
+                    break;
+                case 2:
+                    bean1 = new CircleBean1(CircleBean1.LEFT_BIG, usedata);
+                    break;
+            }
+            datas.add(bean1);
+        }
+        if (adapter == null) {
+            adapter = new CircleAdapter1(datas, getContext());
+            bannerHeader = new BannerHeader(getContext());
+            pics.add(entity.getData().getShowing_url());
+            banner = bannerHeader.getBanner();
+            banner.setImages(pics);
+            banner.setImageLoader(new GlideImageLoader())
+                    .setDelayTime(5000)
+                    .start();
+            adapter.addHeaderView(bannerHeader);
+            adapter.setOnItemChildClickListener(this);
+            adapter.addHeaderView(new HeaderCircleScroll(getContext(), entity.getData().getUserdata()));
+            rv.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+        Intent intent = new Intent();
+        switch (view.getId()) {
+            case R.id.THREE_SMALL_img1:
+            case R.id.RIGHT_BIG_img1:
+            case R.id.LEFT_BIG_img1:
+                Log.e("aa", position + "-----" + datas.get(position).getArray().get(0).getImagetext_id());
+                intent.putExtra("imagetext_id,", datas.get(position).getArray().get(0).getImagetext_id());
+                datas.get(position).getArray().get(0).getImagetext_id();
+                break;
+            case R.id.THREE_SMALL_img2:
+            case R.id.RIGHT_BIG_img2:
+            case R.id.LEFT_BIG_img2:
+                Log.e("aa", position + "-----" + datas.get(position).getArray().get(1).getImagetext_id());
+                intent.putExtra("imagetext_id,", datas.get(position).getArray().get(1).getImagetext_id());
+                datas.get(position).getArray().get(1).getImagetext_id();
+                break;
+            case R.id.THREE_SMALL_img3:
+            case R.id.RIGHT_BIG_img3:
+            case R.id.LEFT_BIG_img3:
+                Log.e("aa", position + "-----" + datas.get(position).getArray().get(2).getImagetext_id());
+                intent.putExtra("imagetext_id,", datas.get(position).getArray().get(2).getImagetext_id());
+                datas.get(position).getArray().get(2).getImagetext_id();
+                break;
+        }
+//        intent.setClass(getContext(), DetailCircleImageActivity.class);
+//        startActivity(intent);6=3
     }
 }

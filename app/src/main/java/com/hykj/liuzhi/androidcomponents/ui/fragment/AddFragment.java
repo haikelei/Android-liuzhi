@@ -9,14 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hykj.liuzhi.R;
-
 /**
  * @author: lujialei
  * @date: 2018/9/27
  * @describe:
  */
-
-
 public class AddFragment extends Fragment {
 
     @Nullable

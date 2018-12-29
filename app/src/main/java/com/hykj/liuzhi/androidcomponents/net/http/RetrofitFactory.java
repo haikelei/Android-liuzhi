@@ -65,7 +65,6 @@ public class RetrofitFactory {
      */
     public static class LogInterceptor implements Interceptor {
         private String TAG = "okhttp";
-
         @Override
         public okhttp3.Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
@@ -77,7 +76,6 @@ public class RetrofitFactory {
             String head = response.headers().toString();
             String content = response.body().string();
             Logger.t("response body:").i( content);
-
             return response.newBuilder()
                     .body(okhttp3.ResponseBody.create(mediaType, content))
                     .build();

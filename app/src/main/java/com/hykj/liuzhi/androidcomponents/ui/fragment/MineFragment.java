@@ -1,5 +1,6 @@
 package com.hykj.liuzhi.androidcomponents.ui.fragment;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.google.gson.Gson;
@@ -28,13 +28,14 @@ import com.hykj.liuzhi.androidcomponents.ui.activity.MyJiFenActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.OffLineVideoActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.SetUpActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.MinePagerAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.utils.permission.RxPermissions;
 import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
 import com.hykj.liuzhi.androidcomponents.utils.RoundImageView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.functions.Consumer;
 
 /**
  * @author: lujialei
@@ -78,7 +79,7 @@ public class MineFragment extends Fragment {
     @BindView(R.id.mineTvmyfans)
     TextView tvMyFans;
     Gson gson = new Gson();
-
+    private RxPermissions rxPermissions;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,12 +88,12 @@ public class MineFragment extends Fragment {
         initView();
         initData();
         return view;
-
     }
 
     private void initData() {
         viewPagerMine.setAdapter(new MinePagerAdapter(getActivity().getSupportFragmentManager()));
         tabLayoutMine.setViewPager(viewPagerMine);
+        rxPermissions = new RxPermissions(getActivity());
     }
 
     @Override
@@ -117,17 +118,24 @@ public class MineFragment extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
-
+    Intent intent = null;
     @OnClick({R.id.iv_mine_userhead, R.id.tv_mine_edit_userdata, R.id.rl_mine_setup, R.id.ll_mine_mycollect, R.id.ll_mine_myfocus, R.id.ll_mine_myfans, R.id.tv_mine_sead, R.id.tv_mine_offline_down})
     public void onViewClicked(View view) {
-        Intent intent = null;
         switch (view.getId()) {
             case R.id.iv_mine_userhead:
-                intent = new Intent(getContext(), EditUserDataActivity.class);
-                break;
             case R.id.tv_mine_edit_userdata:
-                intent = new Intent(getContext(), EditUserDataActivity.class);
-
+                rxPermissions
+                        .request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .subscribe(new Consumer<Boolean>() {
+                            @Override
+                            public void accept(Boolean aBoolean) throws Exception {
+                                if (aBoolean) {
+                                    intent = new Intent(getContext(), EditUserDataActivity.class);
+                                } else {
+                                    Toast.makeText(getActivity(), "请打开读写存储卡权限", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                 break;
             case R.id.rl_mine_setup:
                 intent = new Intent(getContext(), SetUpActivity.class);
@@ -136,22 +144,18 @@ public class MineFragment extends Fragment {
                 intent = new Intent(getContext(), MyCollectActivity.class);
                 break;
 
-            case R.id.ll_mine_myfocus:
-                //关注
+            case R.id.ll_mine_myfocus:   //关注
                 intent = new Intent(getContext(), AttentionActivity.class);
                 intent.putExtra("type", "0");
                 break;
 
-            case R.id.ll_mine_myfans:
-//                intent = new Intent(getContext(), SQLactivity.class);
+            case R.id.ll_mine_myfans://粉丝
                 intent = new Intent(getContext(), AttentionActivity.class);
                 intent.putExtra("type", "1");
                 break;
-
             case R.id.tv_mine_sead:
                 intent = new Intent(getContext(), MyJiFenActivity.class);
                 break;
-
             case R.id.tv_mine_offline_down:
                 intent = new Intent(getContext(), OffLineVideoActivity.class);
                 break;

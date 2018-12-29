@@ -27,6 +27,13 @@ import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.VideoContextBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 
 import org.greenrobot.eventbus.EventBus;
@@ -55,6 +62,7 @@ public class SeacrchViedoFragment extends Fragment implements BaseQuickAdapter.O
     FirstpageAdapter mAdapter;
     List<SoftLanguageBean> data = new ArrayList<>();
     String selecttype;
+    private SmartRefreshLayout smartRefreshLayout;
 
     @Nullable
     @Override
@@ -63,6 +71,29 @@ public class SeacrchViedoFragment extends Fragment implements BaseQuickAdapter.O
         unbinder = ButterKnife.bind(this, view);
         selecttype = getArguments().getString("pid");
         EventBus.getDefault().register(this);
+        smartRefreshLayout=view.findViewById(R.id.home_refreshLayout1);
+        smartRefreshLayout.setRefreshHeader(new ClassicsHeader(getContext()));  //设置 Header 为 贝塞尔雷达 样式
+        smartRefreshLayout.setRefreshFooter(new ClassicsFooter(getContext()).setSpinnerStyle(SpinnerStyle.Scale));//设置 Footer 为 球脉冲 样式
+        smartRefreshLayout.setEnableRefresh(true);//启用刷新
+        smartRefreshLayout.setEnableLoadmore(true);//启用加载
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                page = 1;
+                data.clear();
+                postBackData("");
+                refreshlayout.finishRefresh();
+            }
+        });
+        //加载更多
+        smartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                page++;
+                postBackData("");
+                refreshlayout.finishLoadmore();
+            }
+        });
         return view;
     }
 
@@ -160,7 +191,9 @@ public class SeacrchViedoFragment extends Fragment implements BaseQuickAdapter.O
             Intent intent = new Intent(getContext(), DetailSoftArticleActivity.class);
             startActivity(intent);
         } else if (selecttype.equals("2")) {
-            Intent intent = new Intent(getContext(), DetailVideoActivity.class);
+            Intent intent = new Intent();
+            intent.putExtra("videoid", entity.getData().getArray().get(position).getVideo_id()+ "");
+            intent.setClass(getContext(), DetailVideoActivity.class);
             startActivity(intent);
         }
     }

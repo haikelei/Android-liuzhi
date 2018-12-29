@@ -26,7 +26,6 @@ public class MyCollectActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         iniData();
-
     }
 
     private void iniData() {

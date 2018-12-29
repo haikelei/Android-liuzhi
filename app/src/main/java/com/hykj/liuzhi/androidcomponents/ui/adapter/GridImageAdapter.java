@@ -123,6 +123,9 @@ public class GridImageAdapter extends
             viewHolder.mImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(position==8){
+                        return;
+                    }
                     mOnAddPicClickListener.onAddPicClick();
                 }
             });

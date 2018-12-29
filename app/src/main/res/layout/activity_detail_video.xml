@@ -9,7 +9,7 @@
     <cn.jzvd.JzvdStd
         android:id="@+id/jz_video"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="@dimen/dip_220" />
 
     <LinearLayout
         android:id="@+id/ll_content"
@@ -23,6 +23,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/video_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -35,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="18dp">
 
                 <TextView
                     android:id="@+id/tv_type"
@@ -70,9 +71,8 @@
                     android:textColor="#aaaaaa"
                     android:textSize="10sp" />
 
-
                 <TextView
-                    android:id="@+id/tv_time"
+                    android:id="@+id/video_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -91,18 +91,20 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/Li_videoDetail_Zan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
-
-                <ImageView
+                <TextView
+                    android:id="@+id/tv_videoDetail_Zan"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/is_liked" />
+                    android:background="@drawable/collection_check_box" />
 
                 <TextView
+                    android:id="@+id/video_zan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -113,6 +115,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/videoDetail_videoreward"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -135,16 +138,18 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/videoDetail_Collection"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <ImageView
+                <TextView
+                    android:id="@+id/video_collection"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/not_collected" />
+                    android:background="@drawable/collection_check_box" />
 
                 <TextView
                     android:layout_width="wrap_content"

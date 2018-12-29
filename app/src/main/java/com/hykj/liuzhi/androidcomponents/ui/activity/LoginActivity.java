@@ -16,6 +16,7 @@ import com.hykj.liuzhi.androidcomponents.MainActivity;
 import com.hykj.liuzhi.androidcomponents.bean.LoginEntity;
 import com.hykj.liuzhi.androidcomponents.bean.UserInfo;
 import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
+import com.hykj.liuzhi.androidcomponents.utils.ACache;
 import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
 import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
@@ -88,28 +89,30 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    ACache aCache;
+
     //登陆操作
     private void UserLogin() {
+        aCache = ACache.get(this);
         mLoginPhone = etLoginPhone.getText().toString().trim();
         mLoginPass = etLoginPassword.getText().toString().trim();
         if (TextUtils.isEmpty(mLoginPhone) || TextUtils.isEmpty(mLoginPass)) {
             Toast.makeText(this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
         } else {
-            mLoginPass="";
+            mLoginPass = "";
             HttpHelper.login(mLoginPhone, mLoginPass, new HttpHelper.HttpUtilsCallBack<String>() {
                 @Override
                 public void onFailure(String failure) {
                     Toast.makeText(LoginActivity.this, failure, Toast.LENGTH_SHORT).show();
                 }
-
                 @Override
                 public void onSucceed(String succeed) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     LoginEntity entity = FastJSONHelper.getPerson(succeed, LoginEntity.class);
                     if (entity != null) {
                         UserInfo userInfo = LocalInfoUtils.getUserInfo();
                         LocalInfoUtils.saveUserInfo(mLoginPhone, userInfo.getCode(), mLoginPass);
                         LocalInfoUtils.saveUserdata(succeed);
+                        aCache.put("user_id", String.valueOf(entity.getUserdata().getUser_id()));
                         getUserself(entity.getUserdata().getUser_id());
                     }
                 }
@@ -123,8 +126,10 @@ public class LoginActivity extends BaseActivity {
 
 
     }
+
     //获取用户数据
     public void getUserself(int user_id) {
+        Log.e("aa","---------"+user_id);
         HttpHelper.getUserself(user_id, new HttpHelper.HttpUtilsCallBack<String>() {
             @Override
             public void onFailure(String failure) {
@@ -134,6 +139,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onSucceed(String succeed) {
                 LocalInfoUtils.saveUserself(succeed);
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
 
             @Override

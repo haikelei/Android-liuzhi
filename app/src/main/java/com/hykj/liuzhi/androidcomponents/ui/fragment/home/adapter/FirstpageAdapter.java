@@ -15,8 +15,7 @@ import java.util.List;
 
 public class FirstpageAdapter extends BaseMultiItemQuickAdapter<SoftLanguageBean, BaseViewHolder> {
     Context context;
-
-    public FirstpageAdapter(Context context1, List<SoftLanguageBean> data) {
+    public  FirstpageAdapter(Context context1, List<SoftLanguageBean> data) {
         super(data);
         this.context = context1;
         addItemType(SoftLanguageBean.IMAGE_TEXT_BOTTOM, R.layout.layout_adapter_item_image_text_bottom);
@@ -28,7 +27,6 @@ public class FirstpageAdapter extends BaseMultiItemQuickAdapter<SoftLanguageBean
         addItemType(SoftLanguageBean.IMAGE_HADER, R.layout.layout_adapter_section_imgeheader);
         addItemType(SoftLanguageBean.IMAGE_BUTTOM, R.layout.layout_adapter_section_imge);
     }
-
     @Override
     protected void convert(BaseViewHolder helper, SoftLanguageBean item) {
         switch (helper.getItemViewType()) {

@@ -12,6 +12,7 @@
         android:layout_marginLeft="14dp">
 
         <TextView
+            android:id="@+id/item_select_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="金贵夫人"
@@ -19,6 +20,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/item_select_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
@@ -28,6 +30,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/item_select_addr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="14sp"
@@ -47,11 +50,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp">
-
-
         <CheckBox
             android:id="@+id/ch_delete"
             android:layout_width="20dp"
+            android:checked="false"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="14dp"
@@ -69,6 +71,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/item_select_binaji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -78,8 +81,8 @@
             android:text="编辑"
             android:textColor="#888888"
             android:textSize="11sp" />
-
         <TextView
+            android:id="@+id/item_select_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

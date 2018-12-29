@@ -56,9 +56,11 @@
             android:background="@color/white">
 
             <EditText
+                android:id="@+id/rl_mine_et_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:background="@color/white"
                 android:layout_marginLeft="16dp"
                 android:text="请输入邮箱地址"
                 android:textColor="#aaaaaa"

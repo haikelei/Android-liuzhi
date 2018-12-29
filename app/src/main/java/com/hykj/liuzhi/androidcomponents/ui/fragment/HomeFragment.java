@@ -22,6 +22,7 @@ import com.hykj.liuzhi.androidcomponents.ui.activity.MessageActivity;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.HomeFragmentPagerAdapter;
 import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.VideoContextBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.SignDialog;
+import com.hykj.liuzhi.androidcomponents.utils.ACache;
 import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
 
@@ -35,8 +36,6 @@ import butterknife.Unbinder;
  * @date: 2018/9/27
  * @describe:
  */
-
-
 public class HomeFragment extends Fragment {
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -89,8 +88,10 @@ public class HomeFragment extends Fragment {
      * 签到
      */
     SignInBean entity;
+    ACache aCache;
     public void postSignIn() {
-        HttpHelper.getSignIn(new HttpHelper.HttpUtilsCallBack<String>() {
+        aCache = ACache.get(getContext());
+        HttpHelper.getSignIn(aCache.getAsString("user_id"), new HttpHelper.HttpUtilsCallBack<String>() {
             @Override
             public void onFailure(String failure) {
                 Toast.makeText(getContext(), failure, Toast.LENGTH_SHORT).show();
@@ -98,12 +99,13 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onSucceed(String succeed) {
-//                entity = FastJSONHelper.getPerson(succeed, SignInBean.class);
+                entity = FastJSONHelper.getPerson(succeed, SignInBean.class);
 //                您已连续签到3天,再接再厉哦
-                dialog = new SignDialog(getContext(),entity.getMsg());
+                dialog = new SignDialog(getContext(), entity.getMsg());
                 dialog.setCancelable(true);
                 dialog.show();
             }
+
             @Override
             public void onError(String error) {
                 if (error.equals("1")) {

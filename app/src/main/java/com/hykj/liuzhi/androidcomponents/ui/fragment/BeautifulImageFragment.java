@@ -55,7 +55,6 @@ public class BeautifulImageFragment extends Fragment {
 
     private void initView() {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-
         ArrayList<CircleBean> list = new ArrayList();
         list.add(new CircleBean(1));
         list.add(new CircleBean(2));

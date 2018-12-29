@@ -26,6 +26,13 @@ import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.TextureFragBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.ui.widget.CustomLoadMoreView;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -38,23 +45,23 @@ import butterknife.Unbinder;
 
 /**
  * 纹理
- *
  * @author: lujialei
  * @date: 2018/9/27
  * @describe:
  */
-public class TextureFragment extends ViewPagerFragment implements BaseQuickAdapter.OnItemClickListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class TextureFragment extends ViewPagerFragment implements BaseQuickAdapter.OnItemClickListener {
     @BindView(R.id.rv)
     RecyclerView rv;
     Unbinder unbinder;
     TextureAdapter mAdapter;
-
+    private SmartRefreshLayout smartRefreshLayout;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_home_texture, container, false);
             unbinder = ButterKnife.bind(this, rootView);
+            smartRefreshLayout=rootView.findViewById(R.id.home_refreshLayout);
             initView();
             backData(page);//获取数据
         }
@@ -69,24 +76,35 @@ public class TextureFragment extends ViewPagerFragment implements BaseQuickAdapt
     int page = 1;
     Banner banner;
     BannerHeader header;
-
     private void initView() {
+        smartRefreshLayout.setRefreshHeader(new ClassicsHeader(getContext()));  //设置 Header 为 贝塞尔雷达 样式
+        smartRefreshLayout.setRefreshFooter(new ClassicsFooter(getContext()).setSpinnerStyle(SpinnerStyle.Scale));//设置 Footer 为 球脉冲 样式
+        smartRefreshLayout.setEnableRefresh(true);//启用刷新
+        smartRefreshLayout.setEnableLoadmore(true);//启用加载
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                page = 1;
+                datas.clear();
+                backData(page);
+                refreshlayout.finishRefresh();
+            }
+        });
+        //加载更多
+        smartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                page++;
+                refreshlayout.finishLoadmore();
+            }
+        });
+
+
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         header = new BannerHeader(getContext());
         banner = header.getBanner();
-
-
     }
 
-    private void loadData() {
-        rv.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                page++;
-                backData(page);
-            }
-        }, 2000);
-    }
 
     @Override
     public void onDestroyView() {
@@ -170,8 +188,6 @@ public class TextureFragment extends ViewPagerFragment implements BaseQuickAdapt
             rv.setAdapter(mAdapter);
             mAdapter.addHeaderView(header);
             mAdapter.setOnItemClickListener(this);
-            mAdapter.setLoadMoreView(new CustomLoadMoreView());
-            mAdapter.setOnLoadMoreListener(this, rv);
         } else {
             mAdapter.notifyLoadMoreToLoading();
             mAdapter.loadMoreComplete();
@@ -180,14 +196,12 @@ public class TextureFragment extends ViewPagerFragment implements BaseQuickAdapt
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        Intent intent = new Intent(getContext(), DetailVideoActivity.class);
+        Intent intent = new Intent();
+        intent.putExtra("videoid", datas.get(position).getVideo_id() + "");
+        intent.setClass(getContext(), DetailVideoActivity.class);
         startActivity(intent);
     }
 
-    @Override
-    public void onLoadMoreRequested() {
-        loadData();
-    }
 
     @Override
     protected void onFragmentVisibleChange(boolean isVisible) {

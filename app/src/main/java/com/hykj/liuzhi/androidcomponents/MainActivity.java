@@ -1,14 +1,20 @@
 package com.hykj.liuzhi.androidcomponents;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.hykj.liuzhi.R;
 import com.hykj.liuzhi.androidcomponents.bean.GetusercollectionBean;
 import com.hykj.liuzhi.androidcomponents.net.HttpManager;
+import com.hykj.liuzhi.androidcomponents.ui.activity.EditUserDataActivity;
 import com.hykj.liuzhi.androidcomponents.ui.activity.IssueClumnActivity;
 import com.hykj.liuzhi.androidcomponents.ui.bottomnavigation.BottomNavigationView;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.utils.permission.RxPermissions;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -21,18 +27,18 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.bottom_view)
     BottomNavigationView bottomView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        rxPermissions = new RxPermissions(this);
 //        HttpManager.post(HttpManager.GET_SOWING)
 //                .params("page","1")
 //                .params("number","20")
@@ -52,14 +58,25 @@ public class MainActivity extends AppCompatActivity {
         initListener();
     }
 
+    private RxPermissions rxPermissions;
+
     private void initListener() {
         bottomView.setListener(new BottomNavigationView.Listener() {
             @Override
             public void onClick(int index) {
                 if (index == 2) {//+号跳转系统相册
-                    fitchSystemClumns();
-
-
+                    rxPermissions
+                            .request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            .subscribe(new Consumer<Boolean>() {
+                                @Override
+                                public void accept(Boolean aBoolean) {
+                                    if (aBoolean) {
+                                        fitchSystemClumns();
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "请打开读写存储卡权限", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }
             }
         });
@@ -74,8 +91,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-
         bottomView.initFragment(R.id.container, getSupportFragmentManager());
+    }
+
+    static List<LocalMedia> selectList;
+
+    public List<LocalMedia> getSelectList() {
+        return selectList;
+    }
+
+    public void setSelectList(List<LocalMedia> selectList) {
+        this.selectList = selectList;
     }
 
     @Override
@@ -85,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             switch (requestCode) {
                 case PictureConfig.CHOOSE_REQUEST:
                     // 图片、视频、音频选择结果回调
-                    List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
+                    selectList = PictureSelector.obtainMultipleResult(data);
                     // 例如 LocalMedia 里面返回三种path
                     // 1.media.getPath(); 为原图path
                     // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true  注意：音视频除外

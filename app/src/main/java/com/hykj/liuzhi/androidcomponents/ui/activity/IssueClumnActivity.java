@@ -1,33 +1,56 @@
 package com.hykj.liuzhi.androidcomponents.ui.activity;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.hykj.liuzhi.R;
+import com.hykj.liuzhi.androidcomponents.MainActivity;
+import com.hykj.liuzhi.androidcomponents.bean.MineFileBean;
+import com.hykj.liuzhi.androidcomponents.net.http.ApiConstant;
+import com.hykj.liuzhi.androidcomponents.ui.activity.issue.IssueClumnAddBean;
 import com.hykj.liuzhi.androidcomponents.ui.adapter.GridImageAdapter;
+import com.hykj.liuzhi.androidcomponents.ui.fragment.utils.permission.Debug;
 import com.hykj.liuzhi.androidcomponents.ui.widget.FullyGridLayoutManager;
+import com.hykj.liuzhi.androidcomponents.utils.ACache;
+import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
 import com.hykj.liuzhi.androidcomponents.utils.TitleBuilder;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.body.UIProgressResponseCallBack;
+import com.zhouyou.http.callback.ProgressDialogCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
+import com.zhouyou.http.subsciber.IProgressDialog;
+import com.zhouyou.http.utils.HttpLog;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.zhouyou.http.EasyHttp.getContext;
+
 /**
  * Created by user on 2018/10/10.
  */
-
-public class IssueClumnActivity extends BaseActivity {
+public class IssueClumnActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.recycler_issue_column)
     RecyclerView recyclerIssueColumn;
     private int maxSelectNum = 9;
@@ -36,6 +59,8 @@ public class IssueClumnActivity extends BaseActivity {
     private int themeId;
     private GridImageAdapter mGridImageAdapter;
     private String mTitle;
+    private ImageView issue_hader;
+    private EditText issue_imagetexttext, issue_imagetextlabelid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,9 +74,18 @@ public class IssueClumnActivity extends BaseActivity {
     private void initView() {
         Intent intent = getIntent();
         mTitle = intent.getStringExtra("title");
-
-
         themeId = R.style.picture_default_style;
+        issue_hader = findViewById(R.id.issue_hader);
+        issue_imagetexttext = findViewById(R.id.issue_imagetexttext);
+        issue_imagetextlabelid = findViewById(R.id.issue_imagetextlabelid);
+        findViewById(R.id.issue_submit).setOnClickListener(this);
+        if (new MainActivity().getSelectList() != null && new MainActivity().getSelectList().size() > 0) {
+            for (int i = 0; i < new MainActivity().getSelectList().size(); i++) {
+                selectList.add(new MainActivity().getSelectList().get(i));
+                File file = new File(selectList.get(0).getPath());
+                Glide.with(this).load(file).into(issue_hader);
+            }
+        }
         FullyGridLayoutManager manager = new FullyGridLayoutManager(IssueClumnActivity.this, 4, GridLayoutManager.VERTICAL, false);
         recyclerIssueColumn.setLayoutManager(manager);
         mGridImageAdapter = new GridImageAdapter(IssueClumnActivity.this, onAddPicClickListener);
@@ -93,11 +127,9 @@ public class IssueClumnActivity extends BaseActivity {
                 finish();
 
 
-
             }
         });
     }
-
     private GridImageAdapter.onAddPicClickListener onAddPicClickListener = new GridImageAdapter.onAddPicClickListener() {
         @Override
         public void onAddPicClick() {
@@ -131,9 +163,7 @@ public class IssueClumnActivity extends BaseActivity {
                     //.videoSecond()//显示多少秒以内的视频or音频也可适用
                     //.recordVideoSecond()//录制视频秒数 默认60s
                     .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
-
         }
-
     };
 
     @Override
@@ -143,19 +173,101 @@ public class IssueClumnActivity extends BaseActivity {
             switch (requestCode) {
                 case PictureConfig.CHOOSE_REQUEST:
                     // 图片选择结果回调
-                    selectList = PictureSelector.obtainMultipleResult(data);
+                    List<LocalMedia> selectList1 = PictureSelector.obtainMultipleResult(data);
                     // 例如 LocalMedia 里面返回三种path
                     // 1.media.getPath(); 为原图path
                     // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true
                     // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
                     // 如果裁剪并压缩了，已取压缩路径为准，因为是先裁剪后压缩的
-                    for (LocalMedia media : selectList) {
+                    for (LocalMedia media : selectList1) {
                         Log.i("图片-----》", media.getPath());
+                        selectList.add(media);
                     }
                     mGridImageAdapter.setList(selectList);
                     mGridImageAdapter.notifyDataSetChanged();
                     break;
             }
+        }
+    }
+
+    final UIProgressResponseCallBack listener = new UIProgressResponseCallBack() {
+        @Override
+        public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+            int progress = (int) (bytesRead * 100 / contentLength);
+            HttpLog.e(progress + "% ");
+        }
+    };
+
+    /**
+     * @param files            //文件
+     * @param imagetexttext    //图文内容
+     * @param imagetextlabelid 图文标签
+     * @param user_id          用户id
+     */
+    private ACache aCache;
+    List<File> files = new ArrayList<>();
+    HttpParams params = new HttpParams();
+
+    public void postFile(String imagetexttext, String imagetextlabelid) {
+        aCache = ACache.get(this);
+        if (selectList.size() == 0) {
+            Toast.makeText(getContext(), "请选择一张图片", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (imagetexttext.equals("")) {
+            Toast.makeText(getContext(), "请输入图文内容", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (imagetextlabelid.equals("")) {
+            Toast.makeText(getContext(), "请输入一个标签", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        for (int i = 0; i < selectList.size(); i++) {
+            File file = new File(selectList.get(i).getPath());
+            params.put("files" + i, file, listener);
+        }
+        EasyHttp.post(ApiConstant.Circle_AddImageText)
+                .baseUrl(ApiConstant.ROOT_URL)
+                .params("imagetexttext", imagetexttext)
+                .params("imagetextlabelid", imagetextlabelid)
+                .params("user_id", aCache.getAsString("user_id"))
+                .params("filesnum", selectList.size() + "")
+                .params(params)
+                .execute(new ProgressDialogCallBack<String>(mProgressDialog, true, true) {
+                    @Override
+                    public void onSuccess(String succeed) {
+                        IssueClumnAddBean entity = FastJSONHelper.getPerson(succeed, IssueClumnAddBean.class);
+                        if (entity.getError() != 0) {
+                            Toast.makeText(getContext(), entity.getMsg(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Toast.makeText(getContext(), "上传成功", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        super.onError(e);
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    IProgressDialog mProgressDialog = new IProgressDialog() {
+        @Override
+        public Dialog getDialog() {
+            ProgressDialog dialog = new ProgressDialog(IssueClumnActivity.this);
+            dialog.setMessage("上传中中...");
+            return dialog;
+        }
+    };
+
+    @Override
+    public void onClick(View v) {//担交
+        switch (v.getId()) {
+            case R.id.issue_submit:
+                postFile(issue_imagetexttext.getText().toString(), issue_imagetextlabelid.getText().toString());
+                break;
         }
     }
 }

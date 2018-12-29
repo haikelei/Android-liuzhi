@@ -32,6 +32,8 @@ public class BindEmailActivity extends BaseActivity {
     RelativeLayout rlMineBindemailInput;
     @BindView(R.id.tv_mine_bindemail_descrip)
     TextView tvMineBindemailDescrip;
+    @BindView(R.id.rl_mine_et_input)
+    TextView edInput;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,20 +42,17 @@ public class BindEmailActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.iv_bindemail_back, R.id.iv_bindemail_save,R.id.im_delte})
+    @OnClick({R.id.iv_bindemail_back, R.id.iv_bindemail_save, R.id.im_delte})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_bindemail_back:
                 finish();
                 break;
             case R.id.iv_bindemail_save:
-                Toast.makeText(BindEmailActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
-                rlMineBindemailInput.setVisibility(View.GONE);
-                tvMineBindemailDescrip.setVisibility(View.GONE);
-                llMineBindemailWait.setVisibility(View.VISIBLE);
+                setEmail(edInput.getText().toString());
                 break;
-            case  R.id.im_delte:
-
+            case R.id.im_delte:
+                edInput.setText("");
                 break;
         }
     }
@@ -62,30 +61,35 @@ public class BindEmailActivity extends BaseActivity {
      * 修改邮箱
      */
     private ACache aCache;
-    public void setEmail(String Email) {
-        HttpHelper.getChangEmail(Email, new HttpHelper.HttpUtilsCallBack<String>() {
-            @Override
-            public void onFailure(String failure) {
-                Toast.makeText(getContext(), failure, Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onSucceed(String succeed) {
-                SignInBean entity = FastJSONHelper.getPerson(succeed, SignInBean.class);
-                Toast.makeText(getContext(), entity.getMsg(), Toast.LENGTH_SHORT).show();
-//                aCache.put("user_nickname", etInput.getText().toString());
-                setResult(2);
-                finish();
-            }
-
-            @Override
-            public void onError(String error) {
-                if (error.equals("1")) {
-                    Toast.makeText(getContext(), "请先登录", Toast.LENGTH_SHORT).show();
-                } else if (error.equals("2")) {
-                    Toast.makeText(getContext(), "修改失败", Toast.LENGTH_SHORT).show();
+    public void setEmail(final String Email) {
+        if (Email.matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+") && Email.length() > 0) {
+            HttpHelper.getChangEmail(Email, new HttpHelper.HttpUtilsCallBack<String>() {
+                @Override
+                public void onFailure(String failure) {
+                    Toast.makeText(getContext(), failure, Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
+
+                @Override
+                public void onSucceed(String succeed) {
+                    SignInBean entity = FastJSONHelper.getPerson(succeed, SignInBean.class);
+                    Toast.makeText(getContext(), entity.getMsg(), Toast.LENGTH_SHORT).show();
+                    aCache.put("user_mail", Email);
+                    Toast.makeText(BindEmailActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
+                    rlMineBindemailInput.setVisibility(View.GONE);
+                    tvMineBindemailDescrip.setVisibility(View.GONE);
+                    llMineBindemailWait.setVisibility(View.VISIBLE);
+                    setResult(2);
+                    finish();
+                }
+
+                @Override
+                public void onError(String error) {
+                    Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "邮箱格式有误 ", Toast.LENGTH_SHORT).show();
+        }
     }
 }

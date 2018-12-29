@@ -3,6 +3,7 @@ package com.hykj.liuzhi.androidcomponents.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -68,6 +69,14 @@ public class ChangeNameActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_changename_complete:
+                if (TextUtils.isEmpty(etInput.getText().toString())) {
+                    if (mPosition == 1) {
+                        Toast.makeText(getContext(), "请输入您要修改的昵称", Toast.LENGTH_SHORT).show();
+                    } else if (mPosition == 2) {
+                        Toast.makeText(getContext(), "请输入您要修改的个性签名", Toast.LENGTH_SHORT).show();
+                    }
+                    return;
+                }
                 if (mPosition == 1) {
                     setTingChangeNickName(etInput.getText().toString());
                 } else if (mPosition == 2) {

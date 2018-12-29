@@ -1,1 +1,1 @@
-include ':app', ':libraryBase', ':libraryAdapter', ':libraryVideo'
+include ':app', ':libraryBase', ':libraryAdapter', ':libraryVideo', 'libraryNet'

@@ -298,23 +298,19 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp">
-
                 <TextView
                     style="@style/SetupTextStyle"
                     android:text="清除缓存" />
-
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="12dp"
                     android:layout_alignParentRight="true"
                     android:src="@mipmap/next_grey" />
             </RelativeLayout>
-
             <View
                 style="@style/commonDiciderStyle"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp" />
-
             <TextView
                 android:id="@+id/tv_setup_exitlogin"
                 android:layout_width="match_parent"

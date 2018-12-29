@@ -14,6 +14,7 @@ import com.hykj.liuzhi.androidcomponents.MainActivity;
 import com.hykj.liuzhi.androidcomponents.bean.LoginEntity;
 import com.hykj.liuzhi.androidcomponents.bean.UserInfo;
 import com.hykj.liuzhi.androidcomponents.net.http.HttpHelper;
+import com.hykj.liuzhi.androidcomponents.utils.ACache;
 import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
 import com.hykj.liuzhi.androidcomponents.utils.LocalInfoUtils;
@@ -80,7 +81,10 @@ public class DongStateCodeActivity extends BaseActivity {
         }
     }
 
+    ACache aCache;
+
     private void UserLogin() {
+        aCache = ACache.get(this);
         mLoginPhone = etDongtailoginPhone.getText().toString().trim();
         mLoginCode = etDongtailoginAuthcode.getText().toString().trim();
         if (TextUtils.isEmpty(mLoginPhone) || TextUtils.isEmpty(mLoginCode)) {
@@ -98,6 +102,7 @@ public class DongStateCodeActivity extends BaseActivity {
                     if (entity != null) {
                         UserInfo userInfo = LocalInfoUtils.getUserInfo();
                         LocalInfoUtils.saveUserInfo(mLoginPhone, mLoginCode, userInfo.getPassword());
+                        aCache.put("user_id", String.valueOf(entity.getUserdata().getUser_id()));
                         getUserself(entity.getUserdata().getUser_id());
                     }
                 }
@@ -121,6 +126,7 @@ public class DongStateCodeActivity extends BaseActivity {
             @Override
             public void onSucceed(String succeed) {
                 LocalInfoUtils.saveUserself(succeed);
+                startActivity(new Intent(DongStateCodeActivity.this, MainActivity.class));
             }
 
             @Override

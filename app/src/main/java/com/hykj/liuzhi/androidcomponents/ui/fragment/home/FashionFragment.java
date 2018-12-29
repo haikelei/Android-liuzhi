@@ -29,6 +29,13 @@ import com.hykj.liuzhi.androidcomponents.ui.widget.CustomLoadMoreView;
 import com.hykj.liuzhi.androidcomponents.ui.widget.RecycleViewDivider;
 import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +57,7 @@ public class FashionFragment extends ViewPagerFragment implements BaseQuickAdapt
     RecyclerView rv;
     Unbinder unbinder;
     FashionAdapter mAdapter;
+    private SmartRefreshLayout smartRefreshLayout;
 
     @Nullable
     @Override
@@ -57,6 +65,7 @@ public class FashionFragment extends ViewPagerFragment implements BaseQuickAdapt
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_home_fashion, container, false);
             unbinder = ButterKnife.bind(this, rootView);
+            smartRefreshLayout = rootView.findViewById(R.id.home_refreshLayout);
             initView();
         }
         return rootView;
@@ -68,6 +77,28 @@ public class FashionFragment extends ViewPagerFragment implements BaseQuickAdapt
     }
 
     private void initView() {
+        smartRefreshLayout.setRefreshHeader(new ClassicsHeader(getContext()));  //设置 Header 为 贝塞尔雷达 样式
+        smartRefreshLayout.setRefreshFooter(new ClassicsFooter(getContext()).setSpinnerStyle(SpinnerStyle.Scale));//设置 Footer 为 球脉冲 样式
+        smartRefreshLayout.setEnableRefresh(true);//启用刷新
+        smartRefreshLayout.setEnableLoadmore(true);//启用加载
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                page = 1;
+                datas.clear();
+                backData(page);
+                refreshlayout.finishRefresh();
+            }
+        });
+        //加载更多
+        smartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                page++;
+                backData(page);
+                refreshlayout.finishLoadmore();
+            }
+        });
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         RecycleViewDivider dividerItemDecoration = new RecycleViewDivider(getContext(), DividerItemDecoration.VERTICAL, R.drawable.divider_mileage);
         rv.addItemDecoration(dividerItemDecoration);
@@ -103,6 +134,7 @@ public class FashionFragment extends ViewPagerFragment implements BaseQuickAdapt
                 Toast.makeText(getContext(), ErrorStateCodeUtils.getRegisterErrorMessage(error), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     List<FashionBase> datas = new ArrayList<>();
@@ -146,16 +178,20 @@ public class FashionFragment extends ViewPagerFragment implements BaseQuickAdapt
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        Intent intent = new Intent(getContext(), DetailVideoActivity.class);
+        Intent intent = new Intent();
+        intent.putExtra("videoid", datas.get(position).getSofttext_id() + "");
+        intent.setClass(getContext(), DetailVideoActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void onLoadMoreRequested() {
-        loadData();
-    }
 
-    private void loadData() {
+
+
+
+
+
+    public void onLoadMoreRequested() {
         rv.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -165,13 +201,4 @@ public class FashionFragment extends ViewPagerFragment implements BaseQuickAdapt
         }, 2000);
     }
 
-    @Override
-    protected void onFragmentVisibleChange(boolean isVisible) {
-        super.onFragmentVisibleChange(isVisible);
-        if (isVisible) {
-
-        } else {
-
-        }
-    }
 }

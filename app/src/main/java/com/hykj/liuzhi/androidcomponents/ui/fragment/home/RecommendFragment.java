@@ -25,6 +25,13 @@ import com.hykj.liuzhi.androidcomponents.ui.fragment.home.bean.SoftLanguageBean;
 import com.hykj.liuzhi.androidcomponents.ui.widget.BannerHeader;
 import com.hykj.liuzhi.androidcomponents.utils.ErrorStateCodeUtils;
 import com.hykj.liuzhi.androidcomponents.utils.FastJSONHelper;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -46,10 +53,10 @@ public class RecommendFragment extends ViewPagerFragment implements BaseQuickAda
     @BindView(R.id.rv)
     RecyclerView rv;
     Unbinder unbinder;
-    //    RecommendAdapter mAdapter;
     FirstpageAdapter mAdapter;
     List<SoftLanguageBean> data = new ArrayList<>();
     private Banner banner;
+    private SmartRefreshLayout smartRefreshLayout;
 
     @Nullable
     @Override
@@ -57,7 +64,7 @@ public class RecommendFragment extends ViewPagerFragment implements BaseQuickAda
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_home_recommend, container, false);
             unbinder = ButterKnife.bind(this, rootView);
-            initListener();
+            initListener(rootView);
             postBackData();
         }
         return rootView;
@@ -70,28 +77,33 @@ public class RecommendFragment extends ViewPagerFragment implements BaseQuickAda
         super.onViewCreated(view, savedInstanceState);
         header = new BannerHeader(getContext());
         banner = header.getBanner();
-//        mAdapter.setLoadMoreView(new CustomLoadMoreView());
-
     }
 
-    private void initListener() {
+    private void initListener(View view) {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-//        mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-//            @Override
-//            public void onLoadMoreRequested() {
-////                loadData();
-//            }
-//        }, rv);
-    }
-
-    private void loadData() {
-        rv.postDelayed(new Runnable() {
+        smartRefreshLayout = view.findViewById(R.id.home_refreshLayout1);
+        smartRefreshLayout.setRefreshHeader(new ClassicsHeader(getContext()));  //设置 Header 为 贝塞尔雷达 样式
+        smartRefreshLayout.setRefreshFooter(new ClassicsFooter(getContext()).setSpinnerStyle(SpinnerStyle.Scale));//设置 Footer 为 球脉冲 样式
+        smartRefreshLayout.setEnableRefresh(true);//启用刷新
+        smartRefreshLayout.setEnableLoadmore(true);//启用加载
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void run() {
-//                mAdapter.addData(list);
-                mAdapter.loadMoreComplete();
+            public void onRefresh(RefreshLayout refreshlayout) {
+                page = 1;
+                data.clear();
+                postBackData();
+                refreshlayout.finishRefresh();
             }
-        }, 2000);
+        });
+        //加载更多
+        smartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                page++;
+                refreshlayout.finishLoadmore();
+            }
+        });
+
     }
 
     @Override
@@ -103,9 +115,10 @@ public class RecommendFragment extends ViewPagerFragment implements BaseQuickAda
     }
 
     FirstpagedataBean entity;
+    private int page = 1;
 
     public void postBackData() {
-        HttpHelper.getHomeFirstpagedata(new HttpHelper.HttpUtilsCallBack<String>() {
+        HttpHelper.getHomeFirstpagedata(page + "", new HttpHelper.HttpUtilsCallBack<String>() {
             @Override
             public void onFailure(String failure) {
                 Toast.makeText(getContext(), failure, Toast.LENGTH_SHORT).show();
@@ -185,11 +198,12 @@ public class RecommendFragment extends ViewPagerFragment implements BaseQuickAda
             mAdapter.notifyLoadMoreToLoading();
         }
     }
-
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         if (position <= (entity.getData().getVideodata().size())) {//视频
-            Intent intent = new Intent(getContext(), DetailVideoActivity.class);
+            Intent intent = new Intent();
+            intent.putExtra("videoid", data.get(position).getVideo_id()+ "");
+            intent.setClass(getContext(), DetailVideoActivity.class);
             startActivity(intent);
         } else if (position <= (entity.getData().getSofttextdata().size() + entity.getData().getVideodata().size() + 1)) {//图片
             Intent intent = new Intent(getContext(), DetailSoftArticleActivity.class);
